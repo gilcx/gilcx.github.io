@@ -112,7 +112,7 @@
         const d2 = dx * dx + dy * dy;
         if (d2 < LINK_DIST * LINK_DIST) {
           const d = Math.sqrt(d2);
-          const alpha = (1 - d / LINK_DIST) * 0.30;
+          const alpha = (1 - d / LINK_DIST) * 0.67;
           ctx.strokeStyle = "rgba(243, 120, 140, " + alpha.toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
@@ -132,7 +132,7 @@
       ctx.arc(p.x, p.y, p.r + (near ? 0.6 : 0), 0, Math.PI * 2);
       ctx.fillStyle = near
         ? "rgba(253, 164, 175, 0.95)"
-        : "rgba(216, 158, 172, 0.65)";
+        : "rgba(216, 158, 172, 0.80)";
       ctx.fill();
     }
 
