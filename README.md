@@ -1,57 +1,55 @@
 # Portfolio — Christopher Gil Icaza
 
-A one-page portfolio website built with vanilla HTML, CSS, and JavaScript.
-No frameworks, no build step — just open it in a browser.
+Personal portfolio showcasing my software engineering, systems, AI/LLM, and development projects.
 
-## Features
+🌐 **Live site:** [https://gilcx.github.io](https://gilcx.github.io)
 
-- Animated "wireframe" particle background that reacts to your cursor
-- Horizontally scrollable project carousel with arrow controls
-  (exactly 3 cards per view on desktop, 2 on tablet, 1 on mobile)
-- Color-coded project badges and a wine/burgundy dark theme
-- Fully static — deployable to GitHub Pages or any static host
+## About
 
-## Getting started
+This portfolio highlights projects I’ve worked on across software development, systems engineering, AI infrastructure, and other technical areas.
 
-Option 1 — open `index.html` directly in a browser.
+The site was built from scratch using vanilla HTML, CSS, and JavaScript with a focus on a polished, responsive experience without relying on a frontend framework.
 
-Option 2 — run a local server:
+## Highlights
 
-```bash
-python3 -m http.server
-```
+- Interactive project showcase with responsive carousel navigation
+- Animated particle / wireframe background with cursor interaction
+- Responsive design for desktop, tablet, and mobile
+- Custom dark burgundy visual theme
+- Lightweight static architecture with no frontend framework or runtime dependencies
+- Hosted through GitHub Pages
 
-Then visit <http://localhost:8000>.
+## Technologies
 
-## Project structure
+- HTML5
+- CSS3
+- JavaScript
+- Git / GitHub
+- GitHub Pages
 
-```
+## Design & Implementation
+
+The portfolio is intentionally implemented as a lightweight static website rather than using a larger frontend framework.
+
+Interactive elements, including the animated background and project carousel, are implemented directly in JavaScript, while the layout, responsive behavior, animations, and visual system are handled through custom CSS.
+
+## Repository Structure
+
+```text
 .
-├── index.html            # All page content (edit text, cards, badges here)
+├── index.html
 ├── css/
-│   └── style.css         # Theme colors, layout, animations
+│   └── style.css
 ├── js/
-│   └── main.js           # Particle background + carousel logic
+│   └── main.js
 └── assets/
-    └── *.svg             # Placeholder project images (swap for real screenshots)
+    └── ...
 ```
 
-## Customization
+## Deployment
 
-- **Text & cards** — edit `index.html`. To add a project, copy-paste any
-  `<article class="card">` block and change the `img src`, title, and description.
-- **Colors** — the `:root` variables at the top of `css/style.css`
-  (`--bg`, `--accent`, `--panel`, …). Change one value, the theme follows.
-- **Badge colors** — the `.badge-*` classes in `css/style.css`.
-- **Background particles** — brightness/speed constants in `js/main.js`
-  (the `alpha` value in `draw()` for line brightness; `MOUSE_FORCE` for cursor physics).
-- **Images** — replace the placeholder SVGs in `assets/` with real screenshots
-  (any PNG/JPG works; cards use a 16:10 image area).
+The site is continuously hosted from this repository using GitHub Pages.
 
-## Deploying to GitHub Pages
+Changes pushed to the production branch are reflected on the live portfolio at:
 
-1. Create a GitHub repository.
-2. Push this folder so `index.html` sits at the repo root.
-3. In the repo: **Settings → Pages → Deploy from a branch** → select your
-   branch and `/ (root)` → Save.
-4. Your site is live at `username.github.io/repo-name` within a couple of minutes.
+**https://gilcx.github.io**
