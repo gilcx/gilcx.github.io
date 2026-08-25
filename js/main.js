@@ -112,7 +112,7 @@
         const d2 = dx * dx + dy * dy;
         if (d2 < LINK_DIST * LINK_DIST) {
           const d = Math.sqrt(d2);
-          const alpha = (1 - d / LINK_DIST) * 0.67;
+          const alpha = (1 - d / LINK_DIST) * 0.87;
           ctx.strokeStyle = "rgba(243, 120, 140, " + alpha.toFixed(3) + ")";
           ctx.lineWidth = 1;
           ctx.beginPath();
