@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christopher Gil Icaza — Portfolio</title>
+  <meta name="description" content="Portfolio of Christopher Gil Icaza — Computer Science student at Queen's University, AI/ML & Systems Engineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+
+  <!-- ============ ANIMATED TECH BACKGROUND ============ -->
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <main>
+
+    <!-- ============ HERO / NAME ============ -->
+    <header class="hero reveal">
+      <p class="eyebrow">Computer Science &middot; Queen&rsquo;s University</p>
+      <h1 class="name">
+        Christopher <span class="grad">Gil&nbsp;Icaza</span>
+      </h1>
+      <p class="tagline">
+        AI/ML &amp; Systems Engineering &mdash; building things that think, move fast,
+        and are actually useful.
+      </p>
+      <nav class="contact" aria-label="Contact">
+        <a class="pill" href="mailto:gilchristopher404@gmail.com">
+          <span class="pill-ico">&#9993;</span> gilchristopher404@gmail.com
+        </a>
+        <a class="pill" href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">
+          <span class="pill-ico">in</span> linkedin.com/in/gilc
+        </a>
+      </nav>
+    </header>
+
+    <!-- ============ QUALIFICATIONS ============ -->
+    <section class="creds reveal" aria-label="Qualifications">
+      <span class="cred">
+        <span class="cred-ico">&#9881;</span>
+        Systems &amp; Software Engineering Intern @ Cerio
+      </span>
+      <span class="cred">
+        <span class="cred-ico">&#127942;</span>
+        1st Place &mdash; Mayor&rsquo;s Innovation Challenge 2025
+      </span>
+      <span class="cred">
+        <span class="cred-ico">&#127942;</span>
+        Dunning&ndash;Deshpande Innovation Prize
+      </span>
+      <span class="cred">
+        <span class="cred-ico">&#127891;</span>
+        Queen&rsquo;s Excellence in Teaching Assistance 2025
+      </span>
+      <span class="cred">
+        <span class="cred-ico">&#128200;</span>
+        Dean&rsquo;s Honor List 2023&ndash;2025
+      </span>
+      <span class="cred">
+        <span class="cred-ico">&#129302;</span>
+        B.Comp (Hons) &mdash; CS Specialization, Queen&rsquo;s University
+      </span>
+    </section>
+
+    <!-- ============ SKILLS STRIP ============ -->
+    <section class="skills reveal" aria-label="Skills">
+      <span class="skills-label">Toolkit</span>
+      <ul class="skill-tags">
+        <li>Python</li>
+        <li>Java</li>
+        <li>C++</li>
+        <li>C#</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+        <li>TensorFlow</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Express</li>
+        <li>Flask</li>
+        <li>Unity</li>
+        <li>Git</li>
+        <li>Jira</li>
+        <li>LaTeX</li>
+        <li>Power&nbsp;BI</li>
+        <li>Jest</li>
+      </ul>
+    </section>
+
+    <!-- ============ PROJECT CARDS ============ -->
+    <section class="projects reveal" aria-label="Projects">
+      <div class="projects-head">
+        <div>
+          <h2>Projects</h2>
+          <p class="hint">Use the arrows to scroll &rarr;</p>
+        </div>
+      </div>
+
+      <div class="carousel">
+        <button class="car-btn prev" id="carPrev" aria-label="Previous projects">&larr;</button>
+
+        <!-- The track: copy an entire <article class="card"> block to add a new project.
+             To use a real screenshot, just change the img src to your own file,
+             e.g. src="images/my-project.png" -->
+        <div class="track" id="carTrack">
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/project-handfluence.svg" alt="Handfluence project preview" loading="lazy" />
+              <span class="card-badge badge-gold">Award Winner</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>AI</span><span>Computer Vision</span><span>TensorFlow</span></div>
+              <h3>Handfluence</h3>
+              <p>
+                Real-time American Sign Language &rarr; English translator using OpenCV,
+                MediaPipe and a custom LSTM model trained on hand gestures &mdash; with NLP
+                autocorrection and debouncing to form coherent sentences.
+              </p>
+              <p class="card-foot">
+                <strong>1st Place</strong> &mdash; Mayor&rsquo;s Innovation Challenge 2025 &amp;
+                Dunning&ndash;Deshpande Innovation Prize
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/project-kvwatch.svg" alt="KVWatch project preview" loading="lazy" />
+              <span class="card-badge badge-emerald">Internal Tool</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>Systems</span><span>vLLM</span><span>Python</span></div>
+              <h3>KVWatch</h3>
+              <p>
+                Custom telemetry tool that extends vLLM&rsquo;s AsyncScheduler&nbsp;v1 to expose
+                live KV-cache utilization &mdash; per-request context length, prompt &amp;
+                generated tokens, and VRAM breakdown (model, CUDA graphs, cache, free).
+              </p>
+              <p class="card-foot">Built at Cerio &middot; GPU infrastructure observability</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/project-llm.svg" alt="Private AI LLM platform preview" loading="lazy" />
+              <span class="card-badge badge-amber">MLOps</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>LLM</span><span>vLLM</span><span>Qwen 3.8 27B</span></div>
+              <h3>Private AI LLM Platform</h3>
+              <p>
+                Designed and deployed a confidential in-house LLM service for employees,
+                built on vLLM + Qwen 3.8 27B and accessed through Cline / DeepSeek Harness.
+                Benchmarked TP / PP / DP parallelism modes to lock in max-throughput settings.
+              </p>
+              <p class="card-foot">Built at Cerio &middot; internal AI infrastructure</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/project-bench.svg" alt="CDI benchmark suite preview" loading="lazy" />
+              <span class="card-badge badge-crimson">Performance</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>Python</span><span>Docker</span><span>NVIDIA</span></div>
+              <h3>CDI GPU/CPU Benchmark Suite</h3>
+              <p>
+                Automated GPU/CPU performance benchmarks analyzing latency, throughput and
+                PCIe utilization on Composable Disaggregated Infrastructure, plus dashboards
+                and reports for the Systems Engineering team.
+              </p>
+              <p class="card-foot">Cerio &middot; distributed systems &amp; network-attached GPU scalability</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img src="assets/project-web.svg" alt="Game Design Club website preview" loading="lazy" />
+              <span class="card-badge badge-teal">Full-Stack</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>React</span><span>Sanity CMS</span><span>Jest</span></div>
+              <h3>Game Design Club Website</h3>
+              <p>
+                Redesigned the Queen&rsquo;s Game Design Club site with React, JavaScript and
+                Tailwind, wired a custom Sanity Studio CMS schema with Google OAuth so the
+                executive team can edit content without code &mdash; covered end-to-end with
+                Jest &amp; Cypress.
+              </p>
+              <p class="card-foot">Full-stack developer &amp; QA, Jan &ndash; Apr 2025</p>
+            </div>
+          </article>
+
+        </div>
+
+        <button class="car-btn next" id="carNext" aria-label="Next projects">&rarr;</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
+    <span class="foot-dot">&middot;</span>
+    <span>Queen&rsquo;s University, Kingston ON</span>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

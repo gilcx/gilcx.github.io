@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c2d12"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="400" fill="#0d0a14"/>
+  <rect width="640" height="400" fill="url(#g)" opacity="0.34"/>
+  <rect width="640" height="400" fill="url(#glow)"/>
+  <!-- GPU chip -->
+  <g transform="translate(320 150)">
+    <rect x="-55" y="-55" width="110" height="110" rx="14" fill="#120b1f" stroke="#fbbf24" stroke-opacity="0.7" stroke-width="2"/>
+    <rect x="-28" y="-28" width="56" height="56" rx="8" fill="#f59e0b" fill-opacity="0.25" stroke="#fcd34d" stroke-opacity="0.8"/>
+    <text y="6" text-anchor="middle" font-family="monospace" font-size="15" font-weight="bold" fill="#fde68a">QWEN</text>
+    <g stroke="#fbbf24" stroke-opacity="0.5" stroke-width="2">
+      <line x1="-55" y1="-30" x2="-85" y2="-30"/><line x1="-55" y1="0" x2="-85" y2="0"/><line x1="-55" y1="30" x2="-85" y2="30"/>
+      <line x1="55" y1="-30" x2="85" y2="-30"/><line x1="55" y1="0" x2="85" y2="0"/><line x1="55" y1="30" x2="85" y2="30"/>
+      <line x1="-30" y1="-55" x2="-30" y2="-85"/><line x1="0" y1="-55" x2="0" y2="-85"/><line x1="30" y1="-55" x2="30" y2="-85"/>
+      <line x1="-30" y1="55" x2="-30" y2="85"/><line x1="0" y1="55" x2="0" y2="85"/><line x1="30" y1="55" x2="30" y2="85"/>
+    </g>
+  </g>
+  <text x="48" y="330" font-family="monospace" font-size="15" fill="#fcd34d" letter-spacing="4">LLM / VLLM / MLOPS</text>
+  <text x="48" y="372" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#fffbeb">Private AI LLM Platform</text>
+</svg>
