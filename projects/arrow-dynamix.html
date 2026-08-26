@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arrow Dynamix | Christopher Gil Icaza</title>
+  <meta name="description" content="Arrow Dynamix is a Unity 2D puzzle platformer built by a four-person team and presented at the 2024 Queen's Creative Computing Showcase." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260826-14" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <main class="detail-main">
+    <a class="back-link" href="../index.html#projects"><span aria-hidden="true">&larr;</span> Back to projects</a>
+
+    <header class="detail-hero reveal">
+      <div>
+        <p class="detail-kicker">Game Development &middot; Unity &middot; C#</p>
+        <h1 class="detail-title"><span class="grad">Arrow Dynamix</span></h1>
+        <p class="detail-lede">
+          A 2D puzzle platformer where every arrow can reveal a path forward.
+          Our four-person team built the game in Unity and presented it to a busy
+          crowd at the 2024 Queen's Creative Computing Showcase.
+        </p>
+        <div class="detail-actions">
+          <a class="card-link" href="https://chocokari.itch.io/arrow-dynamix" target="_blank" rel="noopener">Play on itch.io <span aria-hidden="true">&nearr;</span></a>
+          <a class="source-link" href="https://www.cs.queensu.ca/news/2024/04/15/2024-creative-computing-showcase-2/" target="_blank" rel="noopener">View the showcase <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <figure class="detail-photo-wrap">
+        <img class="detail-photo arrow-hero-photo" src="../assets/arrow-showcase-official-3.jpg" alt="A visitor playing Arrow Dynamix on a laptop beneath the team's showcase poster" />
+        <figcaption class="detail-media-caption">
+          Arrow Dynamix at the 2024 Creative Computing Showcase. Photo courtesy of Queen's School of Computing.
+        </figcaption>
+      </figure>
+    </header>
+
+    <section class="detail-section reveal" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title">Game snapshot</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <span class="spec-label">Genre</span>
+          <strong>Puzzle platformer</strong>
+          <p>Platforming, adventure, aim-and-shoot interactions, and environmental puzzles.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Engine</span>
+          <strong>Unity and C#</strong>
+          <p>Custom gameplay scripts for movement, physics, and object dynamics.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Team</span>
+          <strong>Four developers</strong>
+          <p>Built collaboratively through design, engineering, testing, and presentation.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Platforms</span>
+          <strong>HTML5 and Windows</strong>
+          <p>Playable directly in a browser or as a downloadable Windows build.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Play time</span>
+          <strong>About 30 minutes</strong>
+          <p>A compact main experience with escalating mechanics and bonus content.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Launch</span>
+          <strong>600+ page visits</strong>
+          <p>Promoted through itch.io and a live public showcase at Queen's University.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="idea-title">
+      <h2 id="idea-title">Shoot first, learn what happens</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>The bow is the puzzle tool</h3>
+          <p>
+            The player wakes in a mysterious dungeon with only a bow and arrow.
+            Objects scattered through each room react when shot, turning aiming and
+            experimentation into the central way to understand the environment.
+          </p>
+        </article>
+        <article class="detail-panel">
+          <h3>Platforming through the dungeon</h3>
+          <p>
+            Players combine movement, jumping, and accurate shots to activate mechanisms,
+            avoid hazards, navigate obstacles, and uncover the route out. New interactions
+            expand the puzzle vocabulary as the game progresses.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="contribution-title">
+      <h2 id="contribution-title">My contribution</h2>
+      <div class="detail-columns three">
+        <article class="detail-panel">
+          <h3>Gameplay engineering</h3>
+          <p>I developed custom C# scripts supporting player movement, physics behavior, and the feel of the core platforming controls.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Object dynamics</h3>
+          <p>I helped engineer the interactive systems that let arrows affect objects and turn environmental elements into puzzle mechanics.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Launch and presentation</h3>
+          <p>I coordinated marketing work, including the poster, showcase presentation, and itch.io page that attracted more than 600 visits.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="controls-title">
+      <h2 id="controls-title">Controls</h2>
+      <div class="game-controls">
+        <div><kbd>WASD</kbd><span>Move</span></div>
+        <div><kbd>Space</kbd><span>Jump</span></div>
+        <div><kbd>Hold left click</kbd><span>Draw and aim the bow</span></div>
+        <div><kbd>Release left click</kbd><span>Shoot an arrow</span></div>
+        <div><kbd>P</kbd><span>Pause</span></div>
+        <div><kbd>Esc</kbd><span>Pause</span></div>
+        <div><kbd>R</kbd><span>Retry</span></div>
+        <div><kbd>M</kbd><span>Mute music</span></div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="reception-title">
+      <h2 id="reception-title">Player reception</h2>
+      <p class="gallery-intro">
+        The released itch.io build is rated 5 out of 5 stars. Players highlighted
+        its balanced challenge, evolving mechanics, level design, clever puzzles,
+        and unexpectedly substantial bonus content.
+      </p>
+      <div class="reception-grid">
+        <blockquote class="quote-card">
+          <p>&ldquo;Phenomenal level design.&rdquo;</p>
+          <cite>7Breadian on itch.io</cite>
+        </blockquote>
+        <blockquote class="quote-card">
+          <p>&ldquo;I absolutely love the gameplay, and the clever puzzles!&rdquo;</p>
+          <cite>NetBa on itch.io</cite>
+        </blockquote>
+        <blockquote class="quote-card">
+          <p>&ldquo;So creative and well thought out.&rdquo;</p>
+          <cite>Morphious86 on itch.io</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="showcase-title">
+      <h2 id="showcase-title">Queen's Creative Computing Showcase</h2>
+      <p class="gallery-intro">
+        Arrow Dynamix was one of the projects presented alongside 55 student teams
+        at the 2024 showcase. Visitors stopped throughout the event to play, watch,
+        ask questions, and try their hand at escaping the dungeon.
+      </p>
+      <div class="event-gallery arrow-gallery">
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-official-1.jpg" data-lightbox-alt="Visitors gathered around the Arrow Dynamix showcase table while the game runs on a laptop" data-lightbox-caption="Visitors gathering around the Arrow Dynamix demo station. Photo courtesy of Queen's School of Computing." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the crowded Arrow Dynamix showcase photo">
+            <img src="../assets/arrow-showcase-official-1.jpg" alt="Visitors gathered around the Arrow Dynamix showcase table while the game runs on a laptop" width="768" height="960" loading="lazy" />
+          </button>
+          <figcaption>Visitors gathering around the demo station. Queen's School of Computing photo.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-official-2.jpg" data-lightbox-alt="A developer presenting Arrow Dynamix to visitors at the Creative Computing Showcase" data-lightbox-caption="Presenting Arrow Dynamix during the 2024 showcase. Photo courtesy of Queen's School of Computing." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Arrow Dynamix presentation photo">
+            <img src="../assets/arrow-showcase-official-2.jpg" alt="A developer presenting Arrow Dynamix to visitors at the Creative Computing Showcase" width="768" height="960" loading="lazy" />
+          </button>
+          <figcaption>Presenting the game during the showcase. Queen's School of Computing photo.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-personal-1.jpg" data-lightbox-alt="A visitor playing Arrow Dynamix on a laptop at the team's showcase table" data-lightbox-caption="A visitor testing the dungeon platforming and arrow mechanics." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the visitor gameplay photo">
+            <img src="../assets/arrow-showcase-personal-1.jpg" alt="A visitor playing Arrow Dynamix on a laptop at the team's showcase table" width="1440" height="1800" loading="lazy" />
+          </button>
+          <figcaption>A visitor testing the dungeon platforming and arrow mechanics.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-personal-2.jpg" data-lightbox-alt="Arrow Dynamix displayed on a monitor and laptop beside the team poster" data-lightbox-caption="The game, poster, and showcase setup ready for visitors." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Arrow Dynamix display photo">
+            <img src="../assets/arrow-showcase-personal-2.jpg" alt="Arrow Dynamix displayed on a monitor and laptop beside the team poster" width="1440" height="1800" loading="lazy" />
+          </button>
+          <figcaption>The game, poster, and showcase setup ready for visitors.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-personal-3.jpg" data-lightbox-alt="Two visitors playing games beside the Arrow Dynamix poster" data-lightbox-caption="Visitors playing during the busy Creative Computing Showcase." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the busy showcase table photo">
+            <img src="../assets/arrow-showcase-personal-3.jpg" alt="Two visitors playing games beside the Arrow Dynamix poster" width="1440" height="1800" loading="lazy" />
+          </button>
+          <figcaption>Visitors playing during the busy Creative Computing Showcase.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-personal-4.jpg" data-lightbox-alt="A crowd surrounding the Arrow Dynamix laptop and poster" data-lightbox-caption="A steady crowd formed around the Arrow Dynamix station." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Arrow Dynamix crowd photo">
+            <img src="../assets/arrow-showcase-personal-4.jpg" alt="A crowd surrounding the Arrow Dynamix laptop and poster" width="1440" height="1800" loading="lazy" />
+          </button>
+          <figcaption>A steady crowd formed around the Arrow Dynamix station.</figcaption>
+        </figure>
+        <figure class="event-photo event-photo-wide arrow-poster-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/arrow-showcase-personal-5.jpg" data-lightbox-alt="A person holding the printed Arrow Dynamix showcase poster" data-lightbox-caption="The finished Arrow Dynamix poster used to introduce the game and its mechanics." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Arrow Dynamix poster photo">
+            <img src="../assets/arrow-showcase-personal-5.jpg" alt="A person holding the printed Arrow Dynamix showcase poster" width="1285" height="1345" loading="lazy" />
+          </button>
+          <figcaption>The finished poster used to introduce the game and its mechanics.</figcaption>
+        </figure>
+      </div>
+      <p class="showcase-credit">
+        The hero image and first two gallery photographs are courtesy of
+        <a class="inline-link" href="https://www.cs.queensu.ca/news/2024/04/15/2024-creative-computing-showcase-2/" target="_blank" rel="noopener">Queen's School of Computing</a>.
+        Remaining photographs were taken by Christopher Gil Icaza.
+      </p>
+      <dialog class="image-lightbox event-lightbox" id="eventLightbox" aria-label="Enlarged Arrow Dynamix showcase photo">
+        <button class="lightbox-close" id="eventLightboxClose" type="button" aria-label="Close enlarged image">x</button>
+        <img id="eventLightboxImage" src="../assets/arrow-showcase-official-1.jpg" alt="" />
+        <p>
+          <span id="eventLightboxCaption"></span>
+          <span class="lightbox-instruction">Click the image to zoom in by 80%. Click it again to zoom out.</span>
+        </p>
+      </dialog>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="team-title">
+      <h2 id="team-title">Team</h2>
+      <ul class="team-list arrow-team-list">
+        <li><strong>Christopher Gil Icaza</strong><span>Game development, marketing, and presentation</span></li>
+        <li><strong>Craig Tylman</strong><span>Game development</span></li>
+        <li><strong>Xavier Awadalla</strong><span>Game development</span></li>
+        <li><strong>Sungmoon Choi</strong><span>Game development</span></li>
+      </ul>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="links-title">
+      <h2 id="links-title">Play and credits</h2>
+      <div class="coverage-links">
+        <a class="coverage-link" href="https://chocokari.itch.io/arrow-dynamix" target="_blank" rel="noopener">
+          <span>Play Arrow Dynamix in your browser or download the Windows build</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://www.cs.queensu.ca/news/2024/04/15/2024-creative-computing-showcase-2/" target="_blank" rel="noopener">
+          <span>Queen's School of Computing: 2024 Creative Computing Showcase</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://incompetech.com/" target="_blank" rel="noopener">
+          <span>Music by Kevin MacLeod via Incompetech</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="../index.html#projects">More projects</a>
+  </footer>
+
+  <script src="../js/main.js?v=20260826-4"></script>
+</body>
+</html>

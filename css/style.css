@@ -307,6 +307,7 @@ main {
 }
 
 .card-media img.nas-photo { object-position: center 58%; }
+.card-media img.arrow-card-photo { object-position: center 44%; }
 
 .card:hover .card-media img,
 .card:hover .card-media video { transform: scale(1.045); }
@@ -582,6 +583,17 @@ footer a:hover { color: var(--accent); }
   font-size: 0.76rem;
   line-height: 1.45;
 }
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.detail-actions .card-link,
+.detail-actions .source-link { margin-top: 0; }
 
 .detail-section { margin-bottom: 4rem; }
 
@@ -1128,6 +1140,91 @@ footer a:hover { color: var(--accent); }
   font-weight: 600;
 }
 
+/* ---------- Arrow Dynamix detail page ---------- */
+
+.arrow-hero-photo { object-position: center 48%; }
+
+.game-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.game-controls > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+
+.game-controls kbd {
+  flex: 0 0 auto;
+  min-width: 3.1rem;
+  padding: 0.38rem 0.55rem;
+  border: 1px solid rgba(253, 164, 175, 0.42);
+  border-bottom-width: 3px;
+  border-radius: 0.45rem;
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.game-controls span {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.reception-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.quote-card {
+  padding: 1.2rem;
+  border: 1px solid rgba(255, 210, 62, 0.28);
+  border-radius: 0.9rem;
+  background: linear-gradient(145deg, rgba(88, 54, 8, 0.2), var(--panel));
+}
+
+.quote-card p {
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.quote-card cite {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--accent-3);
+  font-size: 0.75rem;
+  font-style: normal;
+}
+
+.arrow-poster-photo {
+  justify-self: center;
+  width: min(100%, 720px);
+}
+
+.showcase-credit {
+  margin-top: 1rem;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.arrow-team-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
 .team-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1205,6 +1302,7 @@ footer a:hover { color: var(--accent); }
   :root { --card-w: calc((100% - 1.25rem) / 2); }
   .pipeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .handfluence-hero { grid-template-columns: 1fr; }
+  .arrow-team-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 640px) {
@@ -1221,10 +1319,13 @@ footer a:hover { color: var(--accent); }
   .team-list,
   .coverage-links,
   .event-gallery,
+  .game-controls,
+  .reception-grid,
   .award-callout,
   .award-facts { grid-template-columns: 1fr; }
   .event-photo-wide { grid-column: auto; }
   .prototype-photo-portrait { grid-column: auto; }
+  .arrow-poster-photo { grid-column: auto; }
   .image-lightbox { width: 92vw; max-height: 90vh; }
   .credit-panel { grid-template-columns: 1fr; }
   .back-link { margin-bottom: 2rem; }
