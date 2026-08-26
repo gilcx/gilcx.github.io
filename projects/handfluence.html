@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handfluence | Christopher Gil Icaza</title>
+  <meta name="description" content="Handfluence is an award-winning accessibility project featuring a custom LSTM pipeline that recognizes live American Sign Language spelling through MediaPipe and OpenCV." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260826-13" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <main class="detail-main handfluence-main">
+    <a class="back-link" href="../index.html#projects"><span aria-hidden="true">&larr;</span> Back to projects</a>
+
+    <header class="detail-hero handfluence-hero reveal">
+      <div>
+        <p class="detail-kicker">Accessibility &middot; Computer Vision &middot; Sequence Learning</p>
+        <h1 class="detail-title"><span class="grad">Handfluence</span></h1>
+        <p class="detail-lede">
+          An accessibility concept designed to help Deaf, DeafBlind, and hearing people
+          communicate in critical settings. My contribution was the live ASL-to-English
+          recognition pipeline, built with OpenCV, MediaPipe Hands, and a custom LSTM.
+        </p>
+      </div>
+      <figure class="detail-photo-wrap">
+        <video class="detail-photo detail-demo-video" autoplay muted loop controls playsinline preload="metadata" poster="../assets/handfluence-name-prediction.png" aria-label="Full Handfluence live recognition demonstration">
+          <source src="../assets/handfluence-demo-full.mp4" type="video/mp4" />
+        </video>
+        <figcaption class="detail-media-caption">Full Handfluence recognition demo. Playback is muted.</figcaption>
+      </figure>
+    </header>
+
+    <section class="detail-section reveal" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title">Technical snapshot</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <span class="spec-label">My contribution</span>
+          <strong>ASL-to-English recognition</strong>
+          <p>Designed and implemented the live computer vision and inference pipeline.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Capture</span>
+          <strong>1080p at 60 FPS</strong>
+          <p>OpenCV camera input with tuned exposure and capture settings.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Landmarks</span>
+          <strong>MediaPipe Hands</strong>
+          <p>Hand landmark coordinates reduced to flattened x and y features.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Training data</span>
+          <strong>Custom JSONL dataset</strong>
+          <p>Self-recorded sequences covering ASL alphabet gestures.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Temporal context</span>
+          <strong>90-frame window</strong>
+          <p>Roughly 1.5 seconds of motion context at the target capture rate.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Model</span>
+          <strong>Custom LSTM</strong>
+          <p>Sequence inference for live letter recognition and word construction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="pipeline-title">
+      <h2 id="pipeline-title">From camera to text</h2>
+      <div class="pipeline" aria-label="Handfluence recognition pipeline">
+        <div class="pipeline-step">
+          <strong>Camera capture</strong>
+          <p>OpenCV receives a live 1080p, 60 FPS video stream.</p>
+        </div>
+        <div class="pipeline-step">
+          <strong>Hand landmarks</strong>
+          <p>MediaPipe detects the hand and returns landmark coordinates.</p>
+        </div>
+        <div class="pipeline-step">
+          <strong>Feature shaping</strong>
+          <p>Landmarks are flattened and reduced from x, y, z to x and y.</p>
+        </div>
+        <div class="pipeline-step">
+          <strong>Sliding window</strong>
+          <p>The newest landmarks enter a rolling 90-frame buffer.</p>
+        </div>
+        <div class="pipeline-step">
+          <strong>LSTM inference</strong>
+          <p>The complete sequence is classified as an ASL alphabet letter.</p>
+        </div>
+        <div class="pipeline-step">
+          <strong>Text output</strong>
+          <p>Stable letters form words, followed by optional dictionary correction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="training-title">
+      <h2 id="training-title">Dataset and model</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>Purpose-built training data</h3>
+          <p>
+            I recorded my own ASL alphabet sequences and passed each frame through
+            MediaPipe Hands. The resulting landmark coordinates were flattened, reduced
+            to x and y values, and stored as JSONL records for repeatable training.
+          </p>
+        </article>
+        <article class="detail-panel">
+          <h3>Learning motion over time</h3>
+          <p>
+            A custom LSTM processes 90 consecutive landmark frames rather than treating
+            each image as an isolated pose. The temporal window lets the model use both
+            hand position and movement when predicting the current letter.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="prototype-title">
+      <h2 id="prototype-title">Prototype in action</h2>
+      <p class="gallery-intro">
+        Beyond letter-by-letter spelling, I also experimented with full-word LSTM
+        recognition. Saved landmark sequences could be replayed from JSONL for inspection,
+        while the live pipeline classified complete signed words.
+      </p>
+      <div class="event-gallery prototype-gallery">
+        <figure class="event-photo event-photo-wide">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-jsonl-replay.png" data-lightbox-alt="A saved Handfluence JSONL training sequence replayed as tracked body, face, and hand landmarks" data-lightbox-caption="Replaying a recorded JSONL gesture sequence to inspect the landmark data before training." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the JSONL landmark replay screenshot">
+            <img src="../assets/handfluence-jsonl-replay.png" alt="A saved Handfluence JSONL training sequence replayed as tracked body, face, and hand landmarks" width="1597" height="937" loading="lazy" />
+          </button>
+          <figcaption>Replaying a recorded JSONL gesture sequence to inspect the landmark data before training.</figcaption>
+        </figure>
+        <figure class="event-photo prototype-photo-portrait">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-name-prediction.png" data-lightbox-alt="Christopher testing the Handfluence full-word LSTM as it recognizes the ASL sign for name at 96 percent confidence" data-lightbox-caption="A full-word LSTM test recognizing the sign for NAME at 96% confidence." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the full-word LSTM prediction screenshot">
+            <img src="../assets/handfluence-name-prediction.png" alt="Christopher testing the Handfluence full-word LSTM as it recognizes the ASL sign for name at 96 percent confidence" width="796" height="935" loading="lazy" />
+          </button>
+          <figcaption>A full-word LSTM test recognizing the sign for NAME at 96% confidence.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="reliability-title">
+      <h2 id="reliability-title">Making live recognition usable</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>Debounced predictions</h3>
+          <p>
+            Transitions between letters can briefly resemble unrelated gestures and
+            produce low-confidence guesses. A debounce layer suppresses these unstable
+            transition predictions so they are not immediately added to the output.
+          </p>
+        </article>
+        <article class="detail-panel">
+          <h3>Human-controlled word correction</h3>
+          <p>
+            After a short completion timeout, an English dictionary compares the spelled
+            token with likely alternatives. The user can select the intended word or keep
+            the original spelling for names and uncommon terms.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="vision-title">
+      <h2 id="vision-title">The full Handfluence concept</h2>
+      <div class="detail-columns three">
+        <article class="detail-panel">
+          <h3>ASL to English</h3>
+          <p>Live computer vision recognizes signed spelling and produces readable English text.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>English to ASL</h3>
+          <p>An animated avatar presents English content as ASL with appropriate structure.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Speech to tactile signing</h3>
+          <p>A robotic hand translates speech into tactile sign language for DeafBlind users.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="award-title">
+      <h2 id="award-title">Mayor's Innovation Challenge</h2>
+      <div class="award-callout">
+        <div class="award-mark" aria-hidden="true">
+          <span>2025</span>
+          <p>Prize winner</p>
+        </div>
+        <div class="award-copy">
+          <h3>Dunin-Deshpande Innovation Centre Prize</h3>
+          <p>
+            Handfluence was selected as a winning project after eight student teams
+            pitched to a panel of local leaders and experts at Kingston City Hall on
+            March 14, 2025.
+          </p>
+          <ul class="award-facts">
+            <li>Admission to the Queen's Founders and Innovators Initiative</li>
+            <li>Entrepreneurship training and industry mentorship</li>
+            <li>Opportunity to unlock up to $4,000 in seed funding</li>
+            <li>Regional pitch opportunity with a prize pool of up to $80,000</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="event-title">
+      <h2 id="event-title">Pitch day at City Hall</h2>
+      <p class="gallery-intro">
+        Handfluence was presented live during the final pitch competition in
+        Kingston City Hall. Click any photo to view the full-size image.
+      </p>
+      <div class="event-gallery">
+        <figure class="event-photo event-photo-wide">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-pitch.png" data-lightbox-alt="The Handfluence team presenting to the judging panel at Kingston City Hall" data-lightbox-caption="Presenting Handfluence to the judging panel at Kingston City Hall." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Handfluence presentation photo">
+            <img src="../assets/handfluence-pitch.png" alt="The Handfluence team presenting to the judging panel at Kingston City Hall" width="1980" height="1319" loading="lazy" />
+          </button>
+          <figcaption>Presenting Handfluence to the judging panel at Kingston City Hall.</figcaption>
+        </figure>
+        <figure class="event-photo event-photo-wide">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-event-group.png" data-lightbox-alt="Participants, judges, and organizers gathered in Kingston City Hall after the competition" data-lightbox-caption="Participants, judges, and organizers following the 2025 pitch competition." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the competition group photo">
+            <img src="../assets/handfluence-event-group.png" alt="Participants, judges, and organizers gathered in Kingston City Hall after the competition" width="1677" height="1193" loading="lazy" />
+          </button>
+          <figcaption>Participants, judges, and organizers following the 2025 pitch competition.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-christopher-award.jpg" data-lightbox-alt="Christopher Gil Icaza holding the Mayor's Innovation Challenge winner trophy and certificate of achievement" data-lightbox-caption="Holding the first-place trophy and certificate of achievement after the competition." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge Christopher's award and certificate photo">
+            <img src="../assets/handfluence-christopher-award.jpg" alt="Christopher Gil Icaza holding the Mayor's Innovation Challenge winner trophy and certificate of achievement" width="1536" height="2048" loading="lazy" />
+          </button>
+          <figcaption>Holding the first-place trophy and certificate of achievement after the competition.</figcaption>
+        </figure>
+        <figure class="event-photo event-photo-award">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-award.png" data-lightbox-alt="The 2025 Mayor's Innovation Challenge winner trophy" data-lightbox-caption="The 2025 Mayor's Innovation Challenge winner trophy." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the winner trophy photo">
+            <img src="../assets/handfluence-award.png" alt="The 2025 Mayor's Innovation Challenge winner trophy" width="1177" height="1920" loading="lazy" />
+          </button>
+          <figcaption>The 2025 Mayor's Innovation Challenge winner trophy.</figcaption>
+        </figure>
+        <figure class="event-photo event-photo-wide">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/handfluence-team-award.png" data-lightbox-alt="Handfluence team members receiving their award at Kingston City Hall" data-lightbox-caption="Handfluence team members receiving the award at City Hall." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the Handfluence award photo">
+            <img src="../assets/handfluence-team-award.png" alt="Handfluence team members receiving their award at Kingston City Hall" width="800" height="572" loading="lazy" />
+          </button>
+          <figcaption>Handfluence team members receiving the award at City Hall.</figcaption>
+        </figure>
+      </div>
+      <dialog class="image-lightbox event-lightbox" id="eventLightbox" aria-label="Enlarged Handfluence event photo">
+        <button class="lightbox-close" id="eventLightboxClose" type="button" aria-label="Close enlarged image">x</button>
+        <img id="eventLightboxImage" src="../assets/handfluence-pitch.png" alt="" />
+        <p>
+          <span id="eventLightboxCaption"></span>
+          <span class="lightbox-instruction">Click the image to zoom in by 80%. Click it again to zoom out.</span>
+        </p>
+      </dialog>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="team-title">
+      <h2 id="team-title">Team</h2>
+      <ul class="team-list">
+        <li>
+          <strong>Christopher Gil Icaza</strong>
+          <span>Computer Science, ASL recognition pipeline</span>
+        </li>
+        <li>
+          <strong>Derek Youngman</strong>
+          <span>Computer Science</span>
+        </li>
+        <li>
+          <strong>Emil Mathew</strong>
+          <span>Mechatronics and Robotics Engineering</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="coverage-title">
+      <h2 id="coverage-title">Coverage</h2>
+      <div class="coverage-links">
+        <a class="coverage-link" href="https://www.cityofkingston.ca/council-and-city-administration/awards/" target="_blank" rel="noopener">
+          <span>City of Kingston: Mayor's Innovation Challenge winners</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://www.queensu.ca/gazette/stories/queen-s-students-win-kingston-mayor-s-innovation-challenge" target="_blank" rel="noopener">
+          <span>Queen's Gazette: Queen's students win Kingston Mayor's Innovation Challenge</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://www.cs.queensu.ca/news/2025/04/01/queens-school-of-computing-students-take-the-2025-mayors-innovation-challenge-by-storm/" target="_blank" rel="noopener">
+          <span>Queen's School of Computing: Students take the challenge by storm</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://www.kingstonist.com/news/winners-of-2025-mayors-innovation-challenge-announced/" target="_blank" rel="noopener">
+          <span>Kingstonist: Winners of the 2025 Mayor's Innovation Challenge</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://globalnews.ca/video/11084980/mayors-innovation-challenge-2025-recipients/" target="_blank" rel="noopener">
+          <span>Global News: Mayor's Innovation Challenge 2025 recipients</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+        <a class="coverage-link" href="https://www.queensjournal.ca/news-in-brief-new-health-sciences-dean-appointed/" target="_blank" rel="noopener">
+          <span>Queen's Journal: Students win innovation challenge</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="../index.html#projects">More projects</a>
+  </footer>
+
+  <script src="../js/main.js?v=20260826-4"></script>
+</body>
+</html>

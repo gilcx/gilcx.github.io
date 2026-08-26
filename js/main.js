@@ -254,8 +254,8 @@
 
   /* ------------------------------------------------------------
    * 4. IMAGE LIGHTBOX
-   *    The Grafana dashboard opens at a readable size and can be
-   *    closed by clicking the image, the close button, or Escape.
+   *    The Grafana dashboard opens in a focused dialog. Clicking
+   *    the image toggles an 80% zoom without leaving the page.
    * ------------------------------------------------------------ */
 
   const grafanaZoom = document.getElementById("grafanaZoom");
@@ -264,7 +264,15 @@
   const grafanaLarge = document.getElementById("grafanaLarge");
 
   if (grafanaZoom && grafanaLightbox && grafanaClose && grafanaLarge) {
+    function resetGrafanaZoom() {
+      grafanaLightbox.classList.remove("is-zoomed");
+      grafanaLarge.setAttribute("aria-label", "Zoom in on the Grafana dashboard");
+      grafanaLightbox.scrollTop = 0;
+      grafanaLightbox.scrollLeft = 0;
+    }
+
     function openGrafanaLightbox() {
+      resetGrafanaZoom();
       if (typeof grafanaLightbox.showModal === "function") {
         grafanaLightbox.showModal();
       } else {
@@ -277,19 +285,93 @@
         grafanaLightbox.close();
       } else {
         grafanaLightbox.removeAttribute("open");
+        resetGrafanaZoom();
       }
     }
 
     grafanaZoom.addEventListener("click", openGrafanaLightbox);
     grafanaClose.addEventListener("click", closeGrafanaLightbox);
-    grafanaLarge.addEventListener("click", closeGrafanaLightbox);
+    grafanaLarge.addEventListener("click", () => {
+      const zoomed = grafanaLightbox.classList.toggle("is-zoomed");
+      grafanaLarge.setAttribute(
+        "aria-label",
+        zoomed ? "Zoom out from the Grafana dashboard" : "Zoom in on the Grafana dashboard"
+      );
+    });
     grafanaLightbox.addEventListener("click", (event) => {
       if (event.target === grafanaLightbox) closeGrafanaLightbox();
     });
+    grafanaLightbox.addEventListener("close", resetGrafanaZoom);
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && grafanaLightbox.hasAttribute("open")) {
         closeGrafanaLightbox();
       }
     });
+  }
+
+  /* ------------------------------------------------------------
+   * 5. EVENT PHOTO LIGHTBOX
+   *    Gallery images open in a focused dialog. Clicking the
+   *    focused image toggles a 1.5x zoom without leaving the page.
+   * ------------------------------------------------------------ */
+
+  const eventPhotoButtons = document.querySelectorAll(".event-photo-button");
+  const eventLightbox = document.getElementById("eventLightbox");
+  const eventLightboxClose = document.getElementById("eventLightboxClose");
+  const eventLightboxImage = document.getElementById("eventLightboxImage");
+  const eventLightboxCaption = document.getElementById("eventLightboxCaption");
+
+  if (
+    eventPhotoButtons.length &&
+    eventLightbox &&
+    eventLightboxClose &&
+    eventLightboxImage &&
+    eventLightboxCaption
+  ) {
+    function resetEventZoom() {
+      eventLightbox.classList.remove("is-zoomed");
+      eventLightboxImage.setAttribute("aria-label", "Zoom in on this image");
+      eventLightbox.scrollTop = 0;
+      eventLightbox.scrollLeft = 0;
+    }
+
+    function openEventLightbox(button) {
+      eventLightboxImage.src = button.dataset.lightboxSrc;
+      eventLightboxImage.alt = button.dataset.lightboxAlt;
+      eventLightboxCaption.textContent = button.dataset.lightboxCaption;
+      resetEventZoom();
+
+      if (typeof eventLightbox.showModal === "function") {
+        eventLightbox.showModal();
+      } else {
+        eventLightbox.setAttribute("open", "");
+      }
+    }
+
+    function closeEventLightbox() {
+      if (typeof eventLightbox.close === "function") {
+        eventLightbox.close();
+      } else {
+        eventLightbox.removeAttribute("open");
+        resetEventZoom();
+      }
+    }
+
+    eventPhotoButtons.forEach((button) => {
+      button.addEventListener("click", () => openEventLightbox(button));
+    });
+
+    eventLightboxClose.addEventListener("click", closeEventLightbox);
+    eventLightboxImage.addEventListener("click", () => {
+      const zoomed = eventLightbox.classList.toggle("is-zoomed");
+      eventLightboxImage.setAttribute(
+        "aria-label",
+        zoomed ? "Zoom out from this image" : "Zoom in on this image"
+      );
+    });
+    eventLightbox.addEventListener("click", (event) => {
+      if (event.target === eventLightbox) closeEventLightbox();
+    });
+    eventLightbox.addEventListener("close", resetEventZoom);
   }
 })();

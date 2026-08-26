@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260826-2" />
+  <link rel="stylesheet" href="css/style.css?v=20260826-13" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
@@ -48,11 +48,11 @@
       </span>
       <span class="cred">
         <span class="cred-ico">&#127942;</span>
-        1st Place, Mayor&rsquo;s Innovation Challenge 2025
+        Winner, Mayor&rsquo;s Innovation Challenge 2025
       </span>
       <span class="cred">
         <span class="cred-ico">&#127942;</span>
-        Dunning&ndash;Deshpande Innovation Prize
+        Dunin&ndash;Deshpande Innovation Centre Prize
       </span>
       <span class="cred">
         <span class="cred-ico">&#127891;</span>
@@ -111,20 +111,23 @@
 
           <article class="card">
             <div class="card-media">
-              <img src="assets/project-handfluence.svg" alt="Handfluence project preview" loading="lazy" />
+              <video class="card-preview-video" autoplay muted loop playsinline preload="metadata" poster="assets/handfluence-name-prediction.png" aria-label="Seven-second Handfluence live recognition demo">
+                <source src="assets/handfluence-demo-card.mp4" type="video/mp4" />
+              </video>
               <span class="card-badge badge-gold">Award Winner</span>
             </div>
             <div class="card-body">
-              <div class="card-tags"><span>AI</span><span>Computer Vision</span><span>TensorFlow</span></div>
+              <div class="card-tags"><span>AI</span><span>Computer Vision</span><span>LSTM</span></div>
               <h3>Handfluence</h3>
               <p>
                 Real-time American Sign Language to English translator using OpenCV,
                 MediaPipe and a custom LSTM model trained on hand gestures, with NLP
                 autocorrection and debouncing to form coherent sentences.
               </p>
+              <a class="card-link" href="projects/handfluence.html">Explore the project <span aria-hidden="true">&rarr;</span></a>
               <p class="card-foot">
-                <strong>1st Place</strong>, Mayor&rsquo;s Innovation Challenge 2025 &amp;
-                Dunning&ndash;Deshpande Innovation Prize
+                <strong>Winner</strong>, Mayor&rsquo;s Innovation Challenge 2025 &amp;
+                Dunin&ndash;Deshpande Innovation Centre Prize
               </p>
             </div>
           </article>
@@ -233,6 +236,6 @@
     <span>Queen&rsquo;s University, Kingston ON</span>
   </footer>
 
-  <script src="js/main.js?v=20260826-2"></script>
+  <script src="js/main.js?v=20260826-4"></script>
 </body>
 </html>
