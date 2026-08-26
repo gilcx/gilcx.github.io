@@ -1,5 +1,5 @@
 /* ============================================================
-   Portfolio — background particles + project carousel
+   Portfolio - background particles + project carousel
    ============================================================ */
 
 (function () {
@@ -17,8 +17,8 @@
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
 
-  const LINK_DIST = 130;     // px — max distance for a connecting line
-  const MOUSE_DIST = 150;    // px — radius of cursor influence
+  const LINK_DIST = 130;     // px - max distance for a connecting line
+  const MOUSE_DIST = 150;    // px - radius of cursor influence
   const MOUSE_FORCE = 0.55;  // strength of the "bump"
   const MAX_SPEED = 1.6;
 
@@ -195,37 +195,40 @@
   const prevBtn = document.getElementById("carPrev");
   const nextBtn = document.getElementById("carNext");
 
-  function cardStep() {
-    const card = track.children[0];
-    if (!card) return 0;
-    const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
-    return card.getBoundingClientRect().width + gap;
+  if (track && prevBtn && nextBtn) {
+    function cardStep() {
+      const card = track.children[0];
+      if (!card) return 0;
+      const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function scrollByCard(dir) {
+      track.scrollBy({ left: dir * cardStep(), behavior: "smooth" });
+    }
+
+    prevBtn.addEventListener("click", () => scrollByCard(-1));
+    nextBtn.addEventListener("click", () => scrollByCard(1));
+
+    function updateArrows() {
+      const edgeTolerance = 8;
+      const max = track.scrollWidth - track.clientWidth - edgeTolerance;
+      prevBtn.disabled = track.scrollLeft <= edgeTolerance;
+      nextBtn.disabled = track.scrollLeft >= max;
+    }
+
+    track.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    window.addEventListener("load", updateArrows);
+    updateArrows();
+
+    // Arrow-key navigation when focus is inside the carousel
+    track.setAttribute("tabindex", "0");
+    track.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); scrollByCard(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); scrollByCard(-1); }
+    });
   }
-
-  function scrollByCard(dir) {
-    track.scrollBy({ left: dir * cardStep(), behavior: "smooth" });
-  }
-
-  prevBtn.addEventListener("click", () => scrollByCard(-1));
-  nextBtn.addEventListener("click", () => scrollByCard(1));
-
-  function updateArrows() {
-    const max = track.scrollWidth - track.clientWidth - 2;
-    prevBtn.disabled = track.scrollLeft <= 2;
-    nextBtn.disabled = track.scrollLeft >= max;
-  }
-
-  track.addEventListener("scroll", updateArrows, { passive: true });
-  window.addEventListener("resize", updateArrows);
-  window.addEventListener("load", updateArrows);
-  updateArrows();
-
-  // Arrow-key navigation when focus is inside the carousel
-  track.setAttribute("tabindex", "0");
-  track.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") { e.preventDefault(); scrollByCard(1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); scrollByCard(-1); }
-  });
 
   /* ------------------------------------------------------------
    * 3. REVEAL-ON-SCROLL (sections fade in as they enter view)
@@ -247,5 +250,46 @@
       { threshold: 0.12 }
     );
     revealEls.forEach((el) => io.observe(el));
+  }
+
+  /* ------------------------------------------------------------
+   * 4. IMAGE LIGHTBOX
+   *    The Grafana dashboard opens at a readable size and can be
+   *    closed by clicking the image, the close button, or Escape.
+   * ------------------------------------------------------------ */
+
+  const grafanaZoom = document.getElementById("grafanaZoom");
+  const grafanaLightbox = document.getElementById("grafanaLightbox");
+  const grafanaClose = document.getElementById("grafanaClose");
+  const grafanaLarge = document.getElementById("grafanaLarge");
+
+  if (grafanaZoom && grafanaLightbox && grafanaClose && grafanaLarge) {
+    function openGrafanaLightbox() {
+      if (typeof grafanaLightbox.showModal === "function") {
+        grafanaLightbox.showModal();
+      } else {
+        grafanaLightbox.setAttribute("open", "");
+      }
+    }
+
+    function closeGrafanaLightbox() {
+      if (typeof grafanaLightbox.close === "function") {
+        grafanaLightbox.close();
+      } else {
+        grafanaLightbox.removeAttribute("open");
+      }
+    }
+
+    grafanaZoom.addEventListener("click", openGrafanaLightbox);
+    grafanaClose.addEventListener("click", closeGrafanaLightbox);
+    grafanaLarge.addEventListener("click", closeGrafanaLightbox);
+    grafanaLightbox.addEventListener("click", (event) => {
+      if (event.target === grafanaLightbox) closeGrafanaLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && grafanaLightbox.hasAttribute("open")) {
+        closeGrafanaLightbox();
+      }
+    });
   }
 })();

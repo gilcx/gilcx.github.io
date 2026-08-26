@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GIL-NAS | Christopher Gil Icaza</title>
+  <meta name="description" content="A Raspberry Pi 5 NAS with four WD Red drives, M.2 SSD boot storage, OpenMediaVault, Dockerized services, Grafana monitoring, WireGuard remote access, Pi-hole DNS filtering, and dual telemetry displays." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260826-2" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <main class="detail-main">
+    <a class="back-link" href="../index.html#projects"><span aria-hidden="true">&larr;</span> Back to projects</a>
+
+    <header class="detail-hero reveal">
+      <div>
+        <p class="detail-kicker">Home Lab &middot; Storage &middot; Self-Hosted</p>
+        <h1 class="detail-title">GIL-<span class="grad">NAS</span></h1>
+        <p class="detail-lede">
+          A compact four-bay home server built around a Raspberry Pi 5. It combines
+          resilient document storage, high-capacity media storage, containerized
+          services, remote Grafana monitoring, and live hardware telemetry in a
+          customized enclosure.
+        </p>
+      </div>
+      <figure class="detail-photo-wrap">
+        <img class="detail-photo" src="../assets/project-gil-nas.png" alt="GIL-NAS four-bay enclosure in red and black PLA with two LCD system displays" />
+      </figure>
+    </header>
+
+    <section class="detail-section reveal" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title">Build snapshot</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <span class="spec-label">Compute</span>
+          <strong>Raspberry Pi 5</strong>
+          <p>Running 64-bit Raspberry Pi OS.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Storage controller</span>
+          <strong>ROCK Pi Penta SATA HAT</strong>
+          <p>Connects and powers the Pi, four hard drives, and displays.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Drives</span>
+          <strong>4 x 3 TB WD Red</strong>
+          <p>Split between resilient files and higher-capacity media.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Management</span>
+          <strong>OpenMediaVault</strong>
+          <p>Storage, filesystems, shares, and system administration.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Boot drive</span>
+          <strong>M.2 SSD over USB</strong>
+          <p>Dedicated solid-state boot storage in an external USB enclosure.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Applications</span>
+          <strong>Docker containers</strong>
+          <p>Isolated, maintainable services for the home media stack.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Monitoring</span>
+          <strong>Grafana dashboards</strong>
+          <p>Remote visibility into system, storage, thermal, and network health.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Cooling</span>
+          <strong>Noctua 12 V exhaust</strong>
+          <p>Quiet active airflow across the Pi and hard drives.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Fabrication</span>
+          <strong>Bambu Lab P1S + AMS</strong>
+          <p>Custom enclosure printed in red and black PLA.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="storage-title">
+      <h2 id="storage-title">Two storage priorities</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>raid1_important</h3>
+          <p>
+            Two 3 TB WD Red NAS drives operate as a mirrored RAID 1 volume for
+            documents and other important files. The mirrored layout prioritizes
+            redundancy if either disk fails.
+          </p>
+        </article>
+        <article class="detail-panel">
+          <h3>mass_media</h3>
+          <p>
+            The other two 3 TB drives are combined as a larger media-oriented pool.
+            It trades redundancy for usable capacity where the stored content is less
+            critical and can be replaced.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="services-title">
+      <h2 id="services-title">Self-hosted services</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>Containerized media stack</h3>
+          <p>
+            Docker keeps the media services isolated and repeatable. Sonarr and Radarr
+            organize series and movies, while qBittorrent handles downloads alongside
+            the supporting services in the wider arr stack.
+          </p>
+          <ul class="service-list" aria-label="Services">
+            <li>Docker</li>
+            <li>Sonarr</li>
+            <li>Radarr</li>
+            <li>qBittorrent</li>
+            <li>arr stack</li>
+          </ul>
+        </article>
+        <article class="detail-panel">
+          <h3>At-a-glance telemetry</h3>
+          <p>
+            Two top-mounted LCDs surface the server's IP address, CPU and RAM load,
+            CPU and SSD temperatures, boot-drive usage, and storage utilization. The
+            displays connect through the system's hardware headers and make routine
+            checks possible without opening a dashboard.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="remote-title">
+      <h2 id="remote-title">Secure remote access</h2>
+      <div class="detail-columns">
+        <article class="detail-panel">
+          <h3>WireGuard VPN</h3>
+          <p>
+            A self-managed WireGuard VPN gives enrolled phones, laptops, and other
+            devices an encrypted route back into the home network. This makes NAS files
+            and internal services available remotely without exposing them directly to
+            the public internet.
+          </p>
+          <ul class="service-list" aria-label="WireGuard capabilities">
+            <li>Encrypted tunnel</li>
+            <li>Remote NAS access</li>
+            <li>Private services</li>
+          </ul>
+        </article>
+        <article class="detail-panel">
+          <h3>Pi-hole over VPN</h3>
+          <p>
+            WireGuard clients use the self-hosted Pi-hole instance for DNS resolution,
+            extending network-level ad and tracker filtering to connected devices even
+            when they are away from home.
+          </p>
+          <ul class="service-list" aria-label="Pi-hole capabilities">
+            <li>DNS filtering</li>
+            <li>Ad blocking</li>
+            <li>VPN clients</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="monitoring-title">
+      <h2 id="monitoring-title">Observability from anywhere</h2>
+      <div class="detail-copy monitoring-copy">
+        <p>
+          A custom Grafana dashboard provides remote visibility into the NAS without
+          relying on the enclosure displays. It tracks CPU utilization, clock speed and
+          temperature; RAM usage; SSD and hard-drive capacity, throughput and thermals;
+          plus Ethernet and wireless network activity.
+        </p>
+      </div>
+      <figure class="dashboard-frame">
+        <button class="dashboard-zoom" id="grafanaZoom" type="button" aria-haspopup="dialog" aria-controls="grafanaLightbox" aria-label="Enlarge the Grafana dashboard screenshot">
+          <img src="../assets/project-gil-nas-grafana.png" alt="Grafana Pi 5 Metrics dashboard showing CPU, RAM, SSD, RAID, drive-pool, Ethernet, and wireless statistics" loading="lazy" />
+          <span class="zoom-hint" aria-hidden="true"><span class="zoom-glyph"></span> Click to enlarge</span>
+        </button>
+        <figcaption>Pi 5 Metrics dashboard: compute, storage, thermal, and network telemetry in one view.</figcaption>
+      </figure>
+      <dialog class="image-lightbox" id="grafanaLightbox" aria-label="Enlarged Grafana dashboard screenshot">
+        <button class="lightbox-close" id="grafanaClose" type="button" aria-label="Close enlarged image">x</button>
+        <img id="grafanaLarge" src="../assets/project-gil-nas-grafana.png" alt="Enlarged Grafana Pi 5 Metrics dashboard" />
+        <p>Click the image or press Escape to close.</p>
+      </dialog>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="enclosure-title">
+      <h2 id="enclosure-title">Designed as a complete appliance</h2>
+      <div class="detail-copy">
+        <p>
+          <a class="inline-link" href="https://the-diy-life.com/building-a-4-bay-3-5-nas-with-a-raspberry-pi-5-and-3d-printed-enclosure/" target="_blank" rel="noopener">Michael Klements'</a>
+          enclosure design was fabricated on a Bambu Lab P1S with AMS,
+          using red and black PLA for the drive bays and chassis. Custom display housings
+          bring the two telemetry screens into the finished build. The result packages
+          the compute, storage, power delivery, cooling, and status displays into a
+          single desktop unit instead of leaving the build as exposed development hardware.
+        </p>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="credit-title">
+      <h2 id="credit-title">Build foundation &amp; my additions</h2>
+      <div class="credit-panel">
+        <div>
+          <p class="credit-copy">
+            The physical enclosure STL files and the baseline four-bay Raspberry Pi 5
+            build are based closely on <a class="inline-link" href="https://the-diy-life.com/building-a-4-bay-3-5-nas-with-a-raspberry-pi-5-and-3d-printed-enclosure/" target="_blank" rel="noopener">Michael Klements' project for The DIY Life</a>. His
+            guide covers the enclosure design, drive trays, SATA mounting, power routing,
+            assembly, and initial OpenMediaVault setup.
+          </p>
+          <a class="source-link" href="https://the-diy-life.com/building-a-4-bay-3-5-nas-with-a-raspberry-pi-5-and-3d-printed-enclosure/" target="_blank" rel="noopener">
+            Read Michael Klements' original guide <span aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+        <div>
+          <h3>My extensions</h3>
+          <ul class="improvement-list">
+            <li>M.2 SSD boot drive connected through a USB enclosure</li>
+            <li>Dual top-mounted LCDs for at-a-glance telemetry</li>
+            <li>Noctua 12 V exhaust fan for quieter active cooling</li>
+            <li>Custom Docker media stack and storage layout</li>
+            <li>Remote hardware observability through Grafana</li>
+            <li>WireGuard remote access with Pi-hole DNS filtering</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="detail-note reveal">
+      RAID improves availability, but it is not a backup. Important files on the mirrored
+      volume should still be copied to a separate device or off-site destination.
+    </p>
+  </main>
+
+  <footer>
+    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="../index.html#projects">More projects</a>
+  </footer>
+
+  <script src="../js/main.js?v=20260826-2"></script>
+</body>
+</html>

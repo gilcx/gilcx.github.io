@@ -4,12 +4,12 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Christopher Gil Icaza — Portfolio</title>
-  <meta name="description" content="Portfolio of Christopher Gil Icaza — Computer Science student at Queen's University, AI/ML & Systems Engineering." />
+  <title>Christopher Gil Icaza | Portfolio</title>
+  <meta name="description" content="Portfolio of Christopher Gil Icaza, a Computer Science student at Queen's University focused on AI/ML and systems engineering." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20260826-2" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
@@ -27,7 +27,7 @@
         Christopher <span class="grad">Gil&nbsp;Icaza</span>
       </h1>
       <p class="tagline">
-        AI/ML &amp; Systems Engineering &mdash; building things that think, move fast,
+        AI/ML &amp; Systems Engineering. Building things that think, move fast,
         and are actually useful.
       </p>
       <nav class="contact" aria-label="Contact">
@@ -48,7 +48,7 @@
       </span>
       <span class="cred">
         <span class="cred-ico">&#127942;</span>
-        1st Place &mdash; Mayor&rsquo;s Innovation Challenge 2025
+        1st Place, Mayor&rsquo;s Innovation Challenge 2025
       </span>
       <span class="cred">
         <span class="cred-ico">&#127942;</span>
@@ -64,7 +64,7 @@
       </span>
       <span class="cred">
         <span class="cred-ico">&#129302;</span>
-        B.Comp (Hons) &mdash; CS Specialization, Queen&rsquo;s University
+        B.Comp (Hons), CS Specialization, Queen&rsquo;s University
       </span>
     </section>
 
@@ -93,7 +93,7 @@
     </section>
 
     <!-- ============ PROJECT CARDS ============ -->
-    <section class="projects reveal" aria-label="Projects">
+    <section class="projects reveal" id="projects" aria-label="Projects">
       <div class="projects-head">
         <div>
           <h2>Projects</h2>
@@ -118,14 +118,32 @@
               <div class="card-tags"><span>AI</span><span>Computer Vision</span><span>TensorFlow</span></div>
               <h3>Handfluence</h3>
               <p>
-                Real-time American Sign Language &rarr; English translator using OpenCV,
-                MediaPipe and a custom LSTM model trained on hand gestures &mdash; with NLP
+                Real-time American Sign Language to English translator using OpenCV,
+                MediaPipe and a custom LSTM model trained on hand gestures, with NLP
                 autocorrection and debouncing to form coherent sentences.
               </p>
               <p class="card-foot">
-                <strong>1st Place</strong> &mdash; Mayor&rsquo;s Innovation Challenge 2025 &amp;
+                <strong>1st Place</strong>, Mayor&rsquo;s Innovation Challenge 2025 &amp;
                 Dunning&ndash;Deshpande Innovation Prize
               </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
+              <img class="nas-photo" src="assets/project-gil-nas.png" alt="Custom red and black four-bay GIL-NAS with dual system-monitoring displays" loading="lazy" />
+              <span class="card-badge badge-teal">Home Lab</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>Raspberry Pi 5</span><span>OMV</span><span>Grafana</span></div>
+              <h3>GIL-NAS</h3>
+              <p>
+                Custom four-bay Raspberry Pi 5 NAS with mirrored and pooled storage,
+                containerized media services, remote Grafana monitoring, and dual LCD
+                telemetry in a 3D-printed enclosure.
+              </p>
+              <a class="card-link" href="projects/gil-nas.html">Explore the build <span aria-hidden="true">&rarr;</span></a>
+              <p class="card-foot">4 x 3 TB WD Red &middot; ROCK Pi Penta SATA HAT</p>
             </div>
           </article>
 
@@ -139,7 +157,7 @@
               <h3>KVWatch</h3>
               <p>
                 Custom telemetry tool that extends vLLM&rsquo;s AsyncScheduler&nbsp;v1 to expose
-                live KV-cache utilization &mdash; per-request context length, prompt &amp;
+                live KV-cache utilization, including per-request context length, prompt &amp;
                 generated tokens, and VRAM breakdown (model, CUDA graphs, cache, free).
               </p>
               <p class="card-foot">Built at Cerio &middot; GPU infrastructure observability</p>
@@ -191,7 +209,7 @@
               <p>
                 Redesigned the Queen&rsquo;s Game Design Club site with React, JavaScript and
                 Tailwind, wired a custom Sanity Studio CMS schema with Google OAuth so the
-                executive team can edit content without code &mdash; covered end-to-end with
+                executive team can edit content without code. The site was tested end-to-end with
                 Jest &amp; Cypress.
               </p>
               <p class="card-foot">Full-stack developer &amp; QA, Jan &ndash; Apr 2025</p>
@@ -215,6 +233,6 @@
     <span>Queen&rsquo;s University, Kingston ON</span>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260826-2"></script>
 </body>
 </html>

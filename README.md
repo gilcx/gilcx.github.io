@@ -1,4 +1,4 @@
-# Portfolio — Christopher Gil Icaza
+# Portfolio - Christopher Gil Icaza
 
 Personal portfolio showcasing my software engineering, systems, AI/LLM, and development projects.
 
