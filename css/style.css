@@ -1144,6 +1144,41 @@ footer a:hover { color: var(--accent); }
 
 .arrow-hero-photo { object-position: center 48%; }
 
+.game-demo-frame {
+  overflow: hidden;
+  margin: 1.1rem 0 0;
+  padding: 0.55rem;
+  border: 1px solid rgba(255, 210, 62, 0.28);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgba(88, 54, 8, 0.18), var(--panel));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+}
+
+.game-demo-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.7rem;
+  background: #050505;
+  object-fit: contain;
+}
+
+.game-demo-frame figcaption {
+  padding: 0.8rem 0.45rem 0.25rem;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.gameplay-gallery .event-photo-button {
+  background: #08070a;
+}
+
+.gameplay-gallery .event-photo img {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
 .game-controls {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
