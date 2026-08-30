@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260826-15" />
+  <link rel="stylesheet" href="css/style.css?v=20260830-20" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
@@ -118,7 +118,7 @@
             </div>
             <div class="card-body">
               <div class="card-tags"><span>AI</span><span>Computer Vision</span><span>LSTM</span></div>
-              <h3>Handfluence</h3>
+              <h3><a class="card-title-link" href="projects/handfluence.html">Handfluence</a></h3>
               <p>
                 Real-time American Sign Language to English translator using OpenCV,
                 MediaPipe and a custom LSTM model trained on hand gestures, with NLP
@@ -134,12 +134,31 @@
 
           <article class="card">
             <div class="card-media">
+              <img class="kvwatch-card-photo" src="assets/kvwatch-card-dashboard.png" alt="KVWatch dashboard showing per-GPU and tensor-parallel KV cache, runtime topology, and GPU VRAM allocation" width="1600" height="1000" loading="lazy" />
+              <span class="card-badge badge-emerald">Internal Tool</span>
+              <span class="card-badge badge-development">In Development</span>
+            </div>
+            <div class="card-body">
+              <div class="card-tags"><span>vLLM Internals</span><span>GPU Telemetry</span><span>KV Cache</span></div>
+              <h3><a class="card-title-link" href="projects/kvwatch.html">KVWatch</a></h3>
+              <p>
+                Custom telemetry tool that extends vLLM&rsquo;s AsyncScheduler&nbsp;v1 to expose
+                live KV-cache utilization, including per-request context length, prompt &amp;
+                generated tokens, and VRAM breakdown (model, CUDA graphs, cache, free).
+              </p>
+              <a class="card-link" href="projects/kvwatch.html">Explore the system <span aria-hidden="true">&rarr;</span></a>
+              <p class="card-foot">Built at Cerio &middot; GPU infrastructure observability</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media">
               <img class="nas-photo" src="assets/project-gil-nas.png" alt="Custom red and black four-bay GIL-NAS with dual system-monitoring displays" loading="lazy" />
               <span class="card-badge badge-teal">Home Lab</span>
             </div>
             <div class="card-body">
               <div class="card-tags"><span>Raspberry Pi 5</span><span>OMV</span><span>Grafana</span></div>
-              <h3>GIL-NAS</h3>
+              <h3><a class="card-title-link" href="projects/gil-nas.html">GIL-NAS</a></h3>
               <p>
                 Custom four-bay Raspberry Pi 5 NAS with mirrored and pooled storage,
                 containerized media services, remote Grafana monitoring, and dual LCD
@@ -157,30 +176,13 @@
             </div>
             <div class="card-body">
               <div class="card-tags"><span>Unity</span><span>C#</span><span>Game Design</span></div>
-              <h3>Arrow Dynamix</h3>
+              <h3><a class="card-title-link" href="projects/arrow-dynamix.html">Arrow Dynamix</a></h3>
               <p>
                 A 2D puzzle platformer where a bow and arrow becomes the key to
                 navigating hazards, interacting with objects, and escaping a dungeon.
               </p>
               <a class="card-link" href="projects/arrow-dynamix.html">Explore the game <span aria-hidden="true">&rarr;</span></a>
               <p class="card-foot">Queen's Creative Computing Showcase &middot; 600+ itch.io visits</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="assets/project-kvwatch.svg" alt="KVWatch project preview" loading="lazy" />
-              <span class="card-badge badge-emerald">Internal Tool</span>
-            </div>
-            <div class="card-body">
-              <div class="card-tags"><span>Systems</span><span>vLLM</span><span>Python</span></div>
-              <h3>KVWatch</h3>
-              <p>
-                Custom telemetry tool that extends vLLM&rsquo;s AsyncScheduler&nbsp;v1 to expose
-                live KV-cache utilization, including per-request context length, prompt &amp;
-                generated tokens, and VRAM breakdown (model, CUDA graphs, cache, free).
-              </p>
-              <p class="card-foot">Built at Cerio &middot; GPU infrastructure observability</p>
             </div>
           </article>
 
@@ -253,6 +255,6 @@
     <span>Queen&rsquo;s University, Kingston ON</span>
   </footer>
 
-  <script src="js/main.js?v=20260826-4"></script>
+  <script src="js/main.js?v=20260830-7"></script>
 </body>
 </html>

@@ -21,9 +21,12 @@
   const MOUSE_DIST = 150;    // px - radius of cursor influence
   const MOUSE_FORCE = 0.55;  // strength of the "bump"
   const MAX_SPEED = 1.6;
+  const MAX_FPS = 60;
+  const FRAME_INTERVAL = 1000 / MAX_FPS;
 
   let W = 0, H = 0, DPR = 1;
   let particles = [];
+  let lastFrameTime = 0;
   const mouse = { x: -9999, y: -9999, active: false };
 
   function rand(min, max) {
@@ -146,9 +149,15 @@
     }
   }
 
-  function loop() {
-    step();
-    draw();
+  function loop(now) {
+    const elapsed = now - lastFrameTime;
+
+    if (elapsed >= FRAME_INTERVAL) {
+      lastFrameTime = now - (elapsed % FRAME_INTERVAL);
+      step();
+      draw();
+    }
+
     requestAnimationFrame(loop);
   }
 
@@ -181,7 +190,9 @@
   if (prefersReducedMotion) {
     draw(); // single static frame, no animation
   } else {
-    loop();
+    draw();
+    lastFrameTime = performance.now();
+    requestAnimationFrame(loop);
   }
 
   /* ------------------------------------------------------------
@@ -255,8 +266,30 @@
   /* ------------------------------------------------------------
    * 4. IMAGE LIGHTBOX
    *    The Grafana dashboard opens in a focused dialog. Clicking
-   *    the image toggles an 80% zoom without leaving the page.
+   *    the image toggles an 80% zoom around the clicked point.
    * ------------------------------------------------------------ */
+
+  function zoomImageAtPoint(lightbox, image, event, zoomInLabel, zoomOutLabel) {
+    if (lightbox.classList.contains("is-zoomed")) {
+      lightbox.classList.remove("is-zoomed");
+      image.setAttribute("aria-label", zoomInLabel);
+      lightbox.scrollTop = 0;
+      lightbox.scrollLeft = 0;
+      return;
+    }
+
+    const imageRect = image.getBoundingClientRect();
+    const xRatio = Math.min(Math.max((event.clientX - imageRect.left) / imageRect.width, 0), 1);
+    const yRatio = Math.min(Math.max((event.clientY - imageRect.top) / imageRect.height, 0), 1);
+
+    lightbox.classList.add("is-zoomed");
+    image.setAttribute("aria-label", zoomOutLabel);
+
+    const targetLeft = image.offsetLeft + image.offsetWidth * xRatio - lightbox.clientWidth / 2;
+    const targetTop = image.offsetTop + image.offsetHeight * yRatio - lightbox.clientHeight / 2;
+    lightbox.scrollLeft = targetLeft;
+    lightbox.scrollTop = targetTop;
+  }
 
   const grafanaZoom = document.getElementById("grafanaZoom");
   const grafanaLightbox = document.getElementById("grafanaLightbox");
@@ -291,11 +324,13 @@
 
     grafanaZoom.addEventListener("click", openGrafanaLightbox);
     grafanaClose.addEventListener("click", closeGrafanaLightbox);
-    grafanaLarge.addEventListener("click", () => {
-      const zoomed = grafanaLightbox.classList.toggle("is-zoomed");
-      grafanaLarge.setAttribute(
-        "aria-label",
-        zoomed ? "Zoom out from the Grafana dashboard" : "Zoom in on the Grafana dashboard"
+    grafanaLarge.addEventListener("click", (event) => {
+      zoomImageAtPoint(
+        grafanaLightbox,
+        grafanaLarge,
+        event,
+        "Zoom in on the Grafana dashboard",
+        "Zoom out from the Grafana dashboard"
       );
     });
     grafanaLightbox.addEventListener("click", (event) => {
@@ -312,7 +347,7 @@
   /* ------------------------------------------------------------
    * 5. EVENT PHOTO LIGHTBOX
    *    Gallery images open in a focused dialog. Clicking the
-   *    focused image toggles a 1.5x zoom without leaving the page.
+   *    focused image toggles a 1.8x zoom around the clicked point.
    * ------------------------------------------------------------ */
 
   const eventPhotoButtons = document.querySelectorAll(".event-photo-button");
@@ -362,11 +397,13 @@
     });
 
     eventLightboxClose.addEventListener("click", closeEventLightbox);
-    eventLightboxImage.addEventListener("click", () => {
-      const zoomed = eventLightbox.classList.toggle("is-zoomed");
-      eventLightboxImage.setAttribute(
-        "aria-label",
-        zoomed ? "Zoom out from this image" : "Zoom in on this image"
+    eventLightboxImage.addEventListener("click", (event) => {
+      zoomImageAtPoint(
+        eventLightbox,
+        eventLightboxImage,
+        event,
+        "Zoom in on this image",
+        "Zoom out from this image"
       );
     });
     eventLightbox.addEventListener("click", (event) => {
