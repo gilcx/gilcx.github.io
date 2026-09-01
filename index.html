@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260830-20" />
+  <link rel="stylesheet" href="css/style.css?v=20260901-22" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 <body>
@@ -188,52 +188,19 @@
 
           <article class="card">
             <div class="card-media">
-              <img src="assets/project-llm.svg" alt="Private AI LLM platform preview" loading="lazy" />
-              <span class="card-badge badge-amber">MLOps</span>
-            </div>
-            <div class="card-body">
-              <div class="card-tags"><span>LLM</span><span>vLLM</span><span>Qwen 3.8 27B</span></div>
-              <h3>Private AI LLM Platform</h3>
-              <p>
-                Designed and deployed a confidential in-house LLM service for employees,
-                built on vLLM + Qwen 3.8 27B and accessed through Cline / DeepSeek Harness.
-                Benchmarked TP / PP / DP parallelism modes to lock in max-throughput settings.
-              </p>
-              <p class="card-foot">Built at Cerio &middot; internal AI infrastructure</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="assets/project-bench.svg" alt="CDI benchmark suite preview" loading="lazy" />
-              <span class="card-badge badge-crimson">Performance</span>
-            </div>
-            <div class="card-body">
-              <div class="card-tags"><span>Python</span><span>Docker</span><span>NVIDIA</span></div>
-              <h3>CDI GPU/CPU Benchmark Suite</h3>
-              <p>
-                Automated GPU/CPU performance benchmarks analyzing latency, throughput and
-                PCIe utilization on Composable Disaggregated Infrastructure, plus dashboards
-                and reports for the Systems Engineering team.
-              </p>
-              <p class="card-foot">Cerio &middot; distributed systems &amp; network-attached GPU scalability</p>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-media">
-              <img src="assets/project-web.svg" alt="Game Design Club website preview" loading="lazy" />
+              <img class="qgdc-card-photo" src="assets/qgdc-landing-page.png" alt="Queen's Game Development Club landing page with the club title, navigation, controller, and terminal artwork" width="2003" height="1243" loading="lazy" />
               <span class="card-badge badge-teal">Full-Stack</span>
             </div>
             <div class="card-body">
-              <div class="card-tags"><span>React</span><span>Sanity CMS</span><span>Jest</span></div>
-              <h3>Game Design Club Website</h3>
+              <div class="card-tags"><span>React</span><span>Tailwind</span><span>Sanity CMS</span></div>
+              <h3><a class="card-title-link" href="projects/game-design-club.html">Game Design Club Website</a></h3>
               <p>
                 Redesigned the Queen&rsquo;s Game Design Club site with React, JavaScript and
                 Tailwind, wired a custom Sanity Studio CMS schema with Google OAuth so the
                 executive team can edit content without code. The site was tested end-to-end with
                 Jest &amp; Cypress.
               </p>
+              <a class="card-link" href="projects/game-design-club.html">Explore the website <span aria-hidden="true">&rarr;</span></a>
               <p class="card-foot">Full-stack developer &amp; QA, Jan &ndash; Apr 2025</p>
             </div>
           </article>

@@ -309,6 +309,7 @@ main {
 .card-media img.nas-photo { object-position: center 58%; }
 .card-media img.arrow-card-photo { object-position: center 44%; }
 .card-media img.kvwatch-card-photo { object-position: center 8%; }
+.card-media img.qgdc-card-photo { object-position: center; }
 
 .card:hover .card-media img,
 .card:hover .card-media video { transform: scale(1.045); }
@@ -1218,6 +1219,47 @@ footer a:hover { color: var(--accent); }
 
 .development-notice strong { color: #dbeafe; }
 
+/* ---------- QGDC website detail page ---------- */
+
+.qgdc-main { max-width: 1240px; }
+
+.qgdc-hero {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.qgdc-title { font-size: clamp(3rem, 6vw, 5.2rem); }
+
+.qgdc-hero-frame {
+  width: 100%;
+  transform: none;
+}
+
+.qgdc-hero-photo {
+  height: auto;
+  aspect-ratio: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+
+.qgdc-copy { max-width: 900px; }
+
+.qgdc-pipeline {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.qgdc-cms-frame { max-width: 1100px; }
+
+.qgdc-cms-frame .event-photo-button > img,
+.qgdc-gallery .event-photo-button > img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .kvwatch-hero {
   grid-template-columns: minmax(320px, 0.78fr) minmax(520px, 1.22fr);
   gap: clamp(2rem, 4vw, 4rem);
@@ -1491,7 +1533,8 @@ footer a:hover { color: var(--accent); }
   :root { --card-w: calc((100% - 1.25rem) / 2); }
   .pipeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .handfluence-hero,
-  .kvwatch-hero { grid-template-columns: 1fr; }
+  .kvwatch-hero,
+  .qgdc-hero { grid-template-columns: 1fr; }
   .arrow-team-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 

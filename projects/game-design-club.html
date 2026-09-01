@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QGDC Website | Christopher Gil Icaza</title>
+  <meta name="description" content="A React and Tailwind website for Queen's Game Development Club, featuring Sanity-managed community projects, a dynamic team directory, and end-to-end testing." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css?v=20260901-22" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <main class="detail-main qgdc-main">
+    <a class="back-link" href="../index.html#projects"><span aria-hidden="true">&larr;</span> Back to projects</a>
+
+    <header class="detail-hero qgdc-hero reveal">
+      <div>
+        <p class="detail-kicker">Web Development &middot; Headless CMS &middot; QA</p>
+        <h1 class="detail-title qgdc-title"><span class="grad">QGDC Website</span></h1>
+        <p class="detail-lede">
+          A content-driven website for Queen's Game Development Club. I helped build
+          the React and Tailwind frontend, connected community projects to Sanity Studio,
+          and tested the experience so club executives could publish without editing code.
+        </p>
+        <div class="detail-actions">
+          <a class="card-link" href="https://www.qgdc.ca/" target="_blank" rel="noopener">Visit qgdc.ca <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </div>
+      <figure class="detail-photo-wrap qgdc-hero-frame">
+        <img class="detail-photo qgdc-hero-photo" src="../assets/qgdc-landing-page.png" alt="Queen's Game Development Club landing page with the club title, navigation, controller, and terminal artwork" width="2003" height="1243" />
+        <figcaption class="detail-media-caption">The QGDC landing page introduces the club through bold typography, playful game-inspired artwork, and direct navigation.</figcaption>
+      </figure>
+    </header>
+
+    <section class="detail-section reveal" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title">Project snapshot</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <span class="spec-label">Role</span>
+          <strong>Full-stack developer and QA</strong>
+          <p>Frontend implementation, CMS integration, content modeling, and testing.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Timeline</span>
+          <strong>January to April 2025</strong>
+          <p>Built collaboratively for the Queen's Game Development Club.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Frontend</span>
+          <strong>React and Tailwind CSS</strong>
+          <p>Responsive pages with reusable layouts, navigation, and interactive sections.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Content</span>
+          <strong>Sanity Studio CMS</strong>
+          <p>Structured project entries populate the public site dynamically.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Editor access</span>
+          <strong>Google OAuth</strong>
+          <p>Authorized club executives can manage content through the Studio interface.</p>
+        </div>
+        <div class="spec">
+          <span class="spec-label">Validation</span>
+          <strong>Jest and Cypress</strong>
+          <p>Component and end-to-end coverage for the main user journeys.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="audiences-title">
+      <h2 id="audiences-title">Built for visitors and club executives</h2>
+      <div class="detail-columns three">
+        <article class="detail-panel">
+          <h3>Discover the club</h3>
+          <p>A persistent top navigation connects visitors to Home, About, Game Jam, and Community Projects without hiding the club's key destinations.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Showcase student work</h3>
+          <p>Large project cards give student games room for an image, title, description, creators, and a direct project link.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Update without code</h3>
+          <p>Sanity Studio gives approved editors a focused form for publishing and maintaining project information.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="cms-title">
+      <h2 id="cms-title">Community Projects, powered by Sanity</h2>
+      <p class="gallery-intro qgdc-copy">
+        The Community Projects page is driven by structured CMS content instead of
+        hard-coded cards. The Studio schema captures each project's title, description,
+        creators, website, and image, then the React frontend turns published entries into
+        the public showcase.
+      </p>
+      <div class="pipeline qgdc-pipeline" aria-label="QGDC community project publishing flow">
+        <div class="pipeline-step"><strong>Edit in Studio</strong><p>An authorized executive creates or updates a project entry.</p></div>
+        <div class="pipeline-step"><strong>Publish content</strong><p>Sanity stores the structured fields and associated project image.</p></div>
+        <div class="pipeline-step"><strong>Fetch in React</strong><p>The frontend requests the published project data at runtime.</p></div>
+        <div class="pipeline-step"><strong>Render the card</strong><p>The page maps each entry into a consistent, responsive showcase.</p></div>
+      </div>
+      <figure class="event-photo event-photo-wide qgdc-cms-frame">
+        <button class="event-photo-button" type="button" data-lightbox-src="../assets/qgdc-sanity-studio.png" data-lightbox-alt="Sanity Studio project editor containing the Arrow Dynamix title, description, creators, website, and image" data-lightbox-caption="The custom Sanity Studio project form used to populate Community Projects without editing the React source." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the QGDC Sanity Studio screenshot">
+          <img src="../assets/qgdc-sanity-studio.png" alt="Sanity Studio project editor containing the Arrow Dynamix title, description, creators, website, and image" width="2269" height="1280" loading="lazy" />
+          <span class="zoom-hint" aria-hidden="true"><span class="zoom-glyph"></span> Click to examine the CMS fields</span>
+        </button>
+        <figcaption>The project editor behind the dynamically populated Community Projects page.</figcaption>
+      </figure>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="contribution-title">
+      <h2 id="contribution-title">My contribution</h2>
+      <div class="detail-columns three">
+        <article class="detail-panel">
+          <h3>React page development</h3>
+          <p>I helped implement the public-facing layouts and interactive sections while matching the site's bold, game-inspired visual direction.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>CMS integration</h3>
+          <p>I connected the Community Projects experience to a custom Sanity schema so content could be added and updated through a dedicated editor.</p>
+        </article>
+        <article class="detail-panel">
+          <h3>Testing and quality</h3>
+          <p>I contributed Jest and Cypress testing to verify components, navigation, CMS-driven content, and important end-to-end user flows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="about-title">
+      <h2 id="about-title">A playful About page</h2>
+      <p class="gallery-intro qgdc-copy">
+        The About page uses a wireframe version of the QGDC logo as a large animated
+        background element. It slowly rotates behind the club mission and calls to action,
+        while collapsible team groups keep a large directory of portraits, names, and roles
+        organized without creating an endless wall of profiles.
+      </p>
+      <div class="event-gallery qgdc-gallery">
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/qgdc-about-page.png" data-lightbox-alt="QGDC About page with club mission text and an animated wireframe logo in the background" data-lightbox-caption="The About page layers the club mission over a slowly rotating wireframe treatment of the QGDC logo." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the QGDC About page screenshot">
+            <img src="../assets/qgdc-about-page.png" alt="QGDC About page with club mission text and an animated wireframe logo in the background" width="2337" height="1037" loading="lazy" />
+          </button>
+          <figcaption>The club story and calls to action sit over a rotating wireframe logo.</figcaption>
+        </figure>
+        <figure class="event-photo">
+          <button class="event-photo-button" type="button" data-lightbox-src="../assets/qgdc-team-sections.png" data-lightbox-alt="QGDC team directory showing co-chairs and an expanded Website team section with portraits, names, and roles" data-lightbox-caption="Collapsible team sections organize member portraits, names, and role titles by discipline." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the QGDC team directory screenshot">
+            <img src="../assets/qgdc-team-sections.png" alt="QGDC team directory showing co-chairs and an expanded Website team section with portraits, names, and roles" width="2311" height="1343" loading="lazy" />
+          </button>
+          <figcaption>Expandable groups make the full club directory easier to browse.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="stack-title">
+      <h2 id="stack-title">Technology</h2>
+      <ul class="service-list" aria-label="QGDC website technology stack">
+        <li>React</li>
+        <li>JavaScript</li>
+        <li>Tailwind CSS</li>
+        <li>Sanity Studio</li>
+        <li>Google OAuth</li>
+        <li>Jest</li>
+        <li>Cypress</li>
+        <li>Responsive design</li>
+      </ul>
+    </section>
+
+    <section class="detail-section reveal" aria-labelledby="links-title">
+      <h2 id="links-title">Visit the website</h2>
+      <div class="coverage-links">
+        <a class="coverage-link" href="https://www.qgdc.ca/" target="_blank" rel="noopener">
+          <span>Queen's Game Development Club official website</span>
+          <span aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </section>
+
+    <p class="detail-note reveal">
+      This page documents my January to April 2025 contribution. The live QGDC website
+      continues to evolve as later club teams add content and features.
+    </p>
+
+    <dialog class="image-lightbox event-lightbox" id="eventLightbox" aria-label="Enlarged QGDC website screenshot">
+      <button class="lightbox-close" id="eventLightboxClose" type="button" aria-label="Close enlarged image">x</button>
+      <img id="eventLightboxImage" src="../assets/qgdc-community-projects.png" alt="" />
+      <p>
+        <span id="eventLightboxCaption"></span>
+        <span class="lightbox-instruction">Click the image to zoom in by 80%. Click it again to zoom out.</span>
+      </p>
+    </dialog>
+  </main>
+
+  <footer>
+    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
+    <span class="foot-dot">&middot;</span>
+    <a href="../index.html#projects">More projects</a>
+  </footer>
+
+  <script src="../js/main.js?v=20260830-7"></script>
+</body>
+</html>
