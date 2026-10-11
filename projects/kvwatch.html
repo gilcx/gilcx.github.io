@@ -3,338 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#17151c" />
   <title>KVWatch | Christopher Gil Icaza</title>
-  <meta name="description" content="KVWatch is a fleet-wide KV-cache observability platform for vLLM inference serving, combining scheduler-level telemetry, per-node dashboards, a fleet CLI, and a Confluence-embeddable status view." />
+  <meta name="description" content="KVWatch: LLM observability built at Cerio. Christopher Gil Icaza’s work on vLLM scheduler telemetry, per-request KV-cache accounting, GPU dashboards, and fleet diagnostics." />
   <link rel="icon" href="../favicon.ico" sizes="any" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css?v=20260901-22" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/portfolio.css?v=20261010-6" />
 </head>
 <body>
-  <canvas id="bg" aria-hidden="true"></canvas>
-  <div class="grid-overlay" aria-hidden="true"></div>
-
-  <main class="detail-main kvwatch-main">
-    <a class="back-link" href="../index.html#projects"><span aria-hidden="true">&larr;</span> Back to projects</a>
-
-    <header class="detail-hero kvwatch-hero reveal">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="../index.html" aria-label="Christopher Gil Icaza, home"><span class="monogram" aria-hidden="true">cg.</span><span>Christopher Gil Icaza</span></a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html#projects">Work</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main class="wrap" id="main">
+    <a class="breadcrumb" href="../index.html#projects"><span aria-hidden="true">←</span> All projects</a>
+    <header class="case-hero">
       <div>
-        <p class="detail-kicker">LLM Infrastructure &middot; Observability &middot; Python</p>
-        <h1 class="detail-title"><span class="grad">KVWatch</span></h1>
-        <p class="detail-lede">
-          Fleet-wide KV-cache observability for vLLM inference serving. KVWatch combines
-          scheduler-level telemetry, a detailed per-node dashboard, an nvidia-smi-style
-          fleet CLI, and a live Confluence status view for a three-node GPU fleet.
-        </p>
-        <p class="development-notice">
-          <strong>In active development.</strong> KVWatch is continuing to evolve, so this
-          project page will be updated as telemetry, integrations, and validation work change.
-        </p>
+        <p class="eyebrow">LLM infrastructure / Observability</p>
+        <h1>KVWatch<span class="accent">.</span></h1>
+        <p class="case-subtitle">See what’s holding<br />your inference back.</p>
+        <p class="case-intro">I built KVWatch at Cerio to make LLM bottlenecks visible: from the KV cache held by individual requests to memory, queue pressure, and throughput across GPU servers.</p>
+        <div class="actions case-actions">
+          <a class="button button-primary" href="#dashboard">Explore the dashboard <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#how-it-works">How it works <span aria-hidden="true">↘</span></a>
+        </div>
       </div>
-      <figure class="detail-photo-wrap kvwatch-hero-frame">
-        <img class="detail-photo kvwatch-hero-photo" src="../assets/kvwatch-dashboard.png" alt="KVWatch dashboard showing per-GPU KV cache, parallelism, VRAM allocation, occupancy, and active requests" />
-        <figcaption class="detail-media-caption">A single-node view of KV cache, VRAM allocation, runtime topology, and active requests.</figcaption>
-      </figure>
+      <aside class="case-meta" aria-label="Project at a glance">
+        <dl>
+          <div><dt>My contribution</dt><dd>Scheduler plugin, dashboards<br />&amp; fleet tooling</dd></div>
+          <div><dt>Built at</dt><dd>Cerio · AI Infrastructure</dd></div>
+          <div><dt>Scope</dt><dd>Three-node GPU fleet</dd></div>
+          <div><dt>Status</dt><dd>In active development</dd></div>
+        </dl>
+        <ul class="tags" aria-label="Technologies"><li>Python</li><li>vLLM</li><li>KV cache</li><li>Prometheus</li><li>NVML</li><li>Docker Compose</li></ul>
+        <p class="source-note"><strong>Internal project at Cerio.</strong> Selected screenshots and architecture are shown here.</p>
+      </aside>
     </header>
 
-    <section class="detail-section reveal" aria-labelledby="snapshot-title">
-      <h2 id="snapshot-title">System snapshot</h2>
-      <div class="spec-grid">
-        <div class="spec">
-          <span class="spec-label">Serving engine</span>
-          <strong>vLLM 0.28.0</strong>
-          <p>A custom V1 AsyncScheduler plugin observes live inference state without forking vLLM.</p>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Model</span>
-          <strong>Qwen3.8-27B</strong>
-          <p>Served in bf16 with prefix caching and DFlash2 speculative decoding.</p>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Fleet</span>
-          <strong>Three GPU nodes</strong>
-          <p>Parallel collection provides one consistent operational view across the fleet.</p>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Context</span>
-          <strong>262,144 tokens</strong>
-          <p>Long-context serving makes accurate KV-cache accounting especially important.</p>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Parallelism</span>
-          <strong>TP 2 &middot; PP 1 &middot; DP 1</strong>
-          <p>The dashboard reports tensor, pipeline, data, and decode-context parallelism.</p>
-        </div>
-        <div class="spec">
-          <span class="spec-label">Telemetry</span>
-          <strong>One-second snapshots</strong>
-          <p>Immutable scheduler snapshots are exposed through a read-only HTTP endpoint.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="detail-section reveal" aria-labelledby="problem-title">
-      <h2 id="problem-title">The visibility gap</h2>
-      <div class="detail-columns three">
-        <article class="detail-panel">
-          <h3>KV cache is the bottleneck</h3>
-          <p>
-            Stock metrics do not expose the physical block accounting operators need:
-            how many blocks are allocated, how much of the pool is occupied, and which
-            requests hold those blocks.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>Request count lacks context</h3>
-          <p>
-            A node can appear idle while retaining KV pressure, or look busy while still
-            having substantial context capacity. Request counts alone do not describe
-            the real serving constraint.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>Fleet checks were fragmented</h3>
-          <p>
-            Checking every node separately made it difficult to compare health, load,
-            throughput, data freshness, and queue pressure at a glance.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="detail-section reveal" aria-labelledby="dashboard-title">
-      <h2 id="dashboard-title">A detailed view of every GPU</h2>
-      <div class="detail-copy monitoring-copy kvwatch-dashboard-copy">
-        <p>
-          The per-node dashboard combines scheduler snapshots, live Prometheus metrics,
-          vLLM startup-log data, and NVML. It surfaces per-GPU and tensor-parallel KV
-          capacity, model and CUDA allocations, free VRAM, topology, active requests,
-          context length, token counts, physical block references, and cache-group layout.
-        </p>
-      </div>
-      <figure class="dashboard-frame kvwatch-dashboard-frame">
-        <button class="event-photo-button kvwatch-dashboard-button" type="button" data-lightbox-src="../assets/kvwatch-dashboard.png" data-lightbox-alt="KVWatch dashboard showing per-GPU and tensor-parallel KV cache usage, runtime topology, VRAM allocation, occupancy, and active request details" data-lightbox-caption="KVWatch combines KV-cache accounting, GPU VRAM allocation, runtime topology, and request-level details in one view." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the KVWatch dashboard screenshot">
-          <img src="../assets/kvwatch-dashboard.png" alt="KVWatch dashboard showing per-GPU and tensor-parallel KV cache usage, runtime topology, VRAM allocation, occupancy, and active request details" width="3840" height="5880" loading="lazy" />
-          <span class="zoom-hint" aria-hidden="true"><span class="zoom-glyph"></span> Click to examine the dashboard</span>
-        </button>
-        <figcaption>Click the dashboard to focus it, then click again to zoom in by 80%.</figcaption>
+    <section class="system-showcase" id="dashboard" aria-labelledby="dashboard-title">
+      <figure class="system-preview">
+        <a class="screenshot-link" href="../assets/kvwatch-dashboard.png" target="_blank" rel="noopener" aria-label="Open the full KVWatch dashboard screenshot in a new tab">
+          <img src="../assets/kvwatch-card-dashboard.png" alt="KVWatch dashboard showing per-GPU KV-cache usage, runtime topology, and GPU memory allocation" width="1600" height="1000" />
+          <span class="screenshot-action">Open full dashboard <span aria-hidden="true">↗</span></span>
+        </a>
+        <figcaption>Per-node dashboard · Cropped preview of the full diagnostic view.</figcaption>
       </figure>
-      <dialog class="image-lightbox event-lightbox" id="eventLightbox" aria-label="Enlarged KVWatch dashboard screenshot">
-        <button class="lightbox-close" id="eventLightboxClose" type="button" aria-label="Close enlarged image">x</button>
-        <img id="eventLightboxImage" src="../assets/kvwatch-dashboard.png" alt="" />
-        <p>
-          <span id="eventLightboxCaption"></span>
-          <span class="lightbox-instruction">Click the image to zoom in by 80%. Click it again to zoom out.</span>
-        </p>
-      </dialog>
-    </section>
-
-    <section class="detail-section reveal" aria-labelledby="architecture-title">
-      <h2 id="architecture-title">From scheduler internals to fleet status</h2>
-      <div class="kvwatch-component-grid">
-        <article class="detail-panel kvwatch-component">
-          <span class="component-number">01</span>
-          <div>
-            <h3>In-scheduler telemetry</h3>
-            <p>
-              KVWatchScheduler subclasses vLLM's V1 AsyncScheduler through the supported
-              plugin interface. It observes physical pools, hybrid cache groups, request
-              context, token counters, and parallelism while delegating scheduling back
-              to vLLM unchanged.
-            </p>
-          </div>
-        </article>
-        <article class="detail-panel kvwatch-component">
-          <span class="component-number">02</span>
-          <div>
-            <h3>Per-node dashboard</h3>
-            <p>
-              A lightweight web service fuses scheduler data, Prometheus, startup logs,
-              and NVML into a detailed operational view of each serving node and GPU.
-            </p>
-          </div>
-        </article>
-        <article class="detail-panel kvwatch-component">
-          <span class="component-number">03</span>
-          <div>
-            <h3>Fleet CLI</h3>
-            <p>
-              A zero-dependency Python CLI gathers nodes in parallel and renders status,
-              requests, KV usage, topology, snapshot age, load, and generated tokens per
-              second in one nvidia-smi-style table.
-            </p>
-          </div>
-        </article>
-        <article class="detail-panel kvwatch-component">
-          <span class="component-number">04</span>
-          <div>
-            <h3>Embeddable status page</h3>
-            <p>
-              One background collector maintains a cached fleet snapshot for a live
-              Confluence view. Any number of viewers can poll that cache without adding
-              more traffic to the inference nodes.
-            </p>
-          </div>
-        </article>
+      <div class="system-copy">
+        <p class="eyebrow">Inside the serving engine</p>
+        <h2 id="dashboard-title">From GPU memory<br />to individual requests.</h2>
+        <p>Connect memory pressure to the work behind it, with a single view of cache occupancy, runtime topology, and active requests.</p>
+        <ul class="system-features">
+          <li>Per-request context, tokens, and KV blocks</li>
+          <li>Model, CUDA graph, cache, and free VRAM</li>
+          <li>Tensor, pipeline, and data parallelism</li>
+        </ul>
       </div>
     </section>
 
-    <section class="detail-section reveal" aria-labelledby="kvstatus-title">
-      <h2 id="kvstatus-title">KVStatus in Confluence</h2>
-      <div class="detail-copy kvstatus-copy">
-        <p>
-          KVStatus is the fleet-wide, at-a-glance layer of KVWatch. A single background
-          collector polls each node's KVWatch scheduler endpoint plus vLLM metrics and
-          health endpoints, then stores one cached fleet snapshot. The Confluence iframe
-          polls that local cache through <code>/api/status</code>, so opening the wiki page
-          does not create another round of requests against every inference server.
-        </p>
+    <section class="case-section" aria-labelledby="overview-title">
+      <div class="case-section-heading"><p class="eyebrow">01 / The short version</p><h2 id="overview-title">What I built, and why.</h2></div>
+      <div class="case-columns">
+        <article><h3>The visibility gap</h3><p>GPU utilization and request counts don’t tell the whole story. Engineers needed to see which requests held KV-cache capacity and compare memory pressure, queues, and health across nodes.</p></article>
+        <article><h3>My contribution</h3><p>I built a vLLM scheduler plugin, a per-node dashboard, a Python fleet CLI, and a Confluence status view. Together, they connect internal serving state with live GPU and inference metrics.</p></article>
+        <article><h3>The result</h3><p>A shared diagnostic view across three GPU nodes, from request-level cache accounting to fleet-wide health and throughput. Engineers can inspect the same system through a dashboard, terminal, or wiki.</p></article>
       </div>
+    </section>
 
-      <figure class="dashboard-frame kvstatus-frame">
-        <button class="event-photo-button kvstatus-button" type="button" data-lightbox-src="../assets/kvwatch-kvstatus-confluence.png" data-lightbox-alt="Redacted KVStatus fleet dashboard embedded in Confluence, showing three online inference servers and their model, requests, KV cache, topology, age, load, and throughput" data-lightbox-caption="The redacted KVStatus Confluence iframe provides one compact, live view of health and capacity across the inference fleet." aria-haspopup="dialog" aria-controls="eventLightbox" aria-label="Enlarge the KVStatus Confluence fleet screenshot">
-          <img src="../assets/kvwatch-kvstatus-confluence.png" alt="Redacted KVStatus fleet dashboard embedded in Confluence, showing three online inference servers and their model, requests, KV cache, topology, age, load, and throughput" width="2194" height="528" loading="lazy" />
-          <span class="zoom-hint" aria-hidden="true"><span class="zoom-glyph"></span> Click to examine the fleet view</span>
-        </button>
-        <figcaption>Redacted Confluence iframe showing all three serving nodes in one live status table.</figcaption>
+    <section class="case-section" id="how-it-works" aria-labelledby="architecture-title">
+      <div class="case-section-heading"><p class="eyebrow">02 / Under the hood</p><h2 id="architecture-title">From scheduler to fleet view.</h2></div>
+      <ol class="pipeline">
+        <li><span class="pipeline-number">01 / Observe</span><h3>Inside the scheduler</h3><p>A read-only plugin captures physical cache pools, request context, and token counters.</p><p class="pipeline-tech">vLLM V1 AsyncScheduler</p></li>
+        <li><span class="pipeline-number">02 / Enrich</span><h3>Connect the metrics</h3><p>Combine scheduler snapshots with GPU telemetry, serving metrics, and startup logs.</p><p class="pipeline-tech">NVML + Prometheus</p></li>
+        <li><span class="pipeline-number">03 / Collect</span><h3>Bring nodes together</h3><p>Poll nodes in parallel and maintain a cached fleet snapshot for shared access.</p><p class="pipeline-tech">Python + HTTP endpoints</p></li>
+        <li><span class="pipeline-number">04 / Diagnose</span><h3>Meet engineers where they work</h3><p>Expose health, capacity, and throughput in the dashboard, CLI, and wiki.</p><p class="pipeline-tech">Web + terminal + Confluence</p></li>
+      </ol>
+      <details class="technical-notes">
+        <summary>Scheduler integration &amp; deployment details</summary>
+        <div>
+          <p><strong>No vLLM fork:</strong> KVWatchScheduler subclasses the V1 AsyncScheduler through its plugin interface and delegates scheduling to vLLM. Immutable snapshots expose physical pools, hybrid cache groups, request-level block references, and parallelism through a read-only HTTP endpoint.</p>
+          <p><strong>Example serving configuration:</strong> The documented deployment uses vLLM 0.28.0 with Qwen3.8-27B in bf16, prefix caching, DFlash2 speculative decoding, and a 262,144-token context limit. The dashboard reports the actual topology on each node.</p>
+          <p><strong>Fleet collection:</strong> A zero-dependency Python CLI queries nodes in parallel. For the wiki view, a background collector maintains one cached snapshot; viewers read that cache instead of triggering additional requests to every inference node.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="case-section" aria-labelledby="fleet-title">
+      <div class="section-heading fleet-heading">
+        <div><p class="eyebrow">03 / Across the fleet</p><h2 id="fleet-title">Three nodes. One operational view.</h2></div>
+        <p>KVStatus · Embedded in Confluence</p>
+      </div>
+      <figure class="fleet-preview">
+        <a class="screenshot-link" href="../assets/kvwatch-kvstatus-confluence.png" target="_blank" rel="noopener" aria-label="Open the full KVStatus fleet screenshot in a new tab">
+          <img src="../assets/kvwatch-kvstatus-confluence.png" alt="Redacted KVStatus table showing three inference servers with health, running and waiting requests, KV-cache capacity, topology, and throughput" width="2194" height="528" loading="lazy" />
+          <span class="screenshot-action">Open full fleet view <span aria-hidden="true">↗</span></span>
+        </a>
+        <figcaption>Recorded fleet snapshot · Internal hostnames are redacted.</figcaption>
       </figure>
-
-      <dl class="kvstatus-legend" aria-label="KVStatus column definitions">
-        <div><dt>SERVER</dt><dd>The fleet node being summarized. Internal hostnames are redacted here.</dd></div>
-        <div><dt>STATUS</dt><dd>ONLINE, PARTIAL, or OFFLINE based on independent health and metrics probes.</dd></div>
-        <div><dt>MODEL</dt><dd>The model currently served by that node.</dd></div>
-        <div><dt>RUNNING / WAITING</dt><dd>Requests actively generating and requests queued for capacity.</dd></div>
-        <div><dt>KV USED / TOTAL</dt><dd>Occupied and available KV-cache capacity in GiB for the selected reporting scope.</dd></div>
-        <div><dt>KV %</dt><dd>The percentage of the reserved KV pool currently occupied.</dd></div>
-        <div><dt>TP / PP / DP</dt><dd>Tensor, pipeline, and data parallelism configured on the node.</dd></div>
-        <div><dt>AGE</dt><dd>Time since the scheduler last produced a KVWatch snapshot, usually advanced by request activity.</dd></div>
-        <div><dt>LOAD</dt><dd>A 0 to 100 severity score based on the greater of KV pressure and request pressure.</dd></div>
-        <div><dt>TOKENS/S</dt><dd>Current generated-output throughput derived from vLLM's cumulative token counter.</dd></div>
-      </dl>
-
-      <p class="detail-note kvstatus-age-note">
-        A long AGE does not automatically mean the values shown to operators are stale.
-        When no requests are being scheduled, the scheduler snapshot may remain unchanged
-        because no KV allocation has changed. KVStatus retains valid static layout data and
-        reconciles dynamic usage, request, and load figures against live vLLM metrics. In
-        this screenshot, the large AGE values indicate nodes without recent request activity,
-        while the fleet table continues to show their current reconciled state.
-      </p>
+      <p class="case-caption">KVStatus brings health, running and queued requests, KV-cache capacity, and generated tokens per second into one compact table. A single collector serves the shared view without multiplying traffic to the inference servers.</p>
+      <details class="technical-notes">
+        <summary>Reading the snapshot age &amp; load score</summary>
+        <div>
+          <p><strong>Age is not automatically staleness:</strong> Idle engines can stop producing scheduler snapshots when there is no new request activity. KVStatus retains static layout data and reconciles dynamic usage and request counts against live vLLM metrics, while showing the snapshot’s age and source.</p>
+          <p><strong>Load reflects the strongest pressure:</strong> The 0–100 score uses the greater of KV-cache pressure and request pressure. Queued work raises the score to at least 90. If required inputs are missing, the composite score is withheld.</p>
+        </div>
+      </details>
     </section>
 
-    <section class="detail-section reveal" aria-labelledby="engineering-title">
-      <h2 id="engineering-title">Key engineering decisions</h2>
-      <div class="detail-columns">
-        <article class="detail-panel">
-          <h3>Stale-snapshot reconciliation</h3>
-          <p>
-            Idle engines stop calling the scheduler, which can freeze the last snapshot.
-            KVWatch detects stale data, preserves static layout facts, and replaces dynamic
-            usage and request figures with live Prometheus gauges. The displayed age and
-            source keep every number auditable.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>DP-aware port reservation</h3>
-          <p>
-            Data-parallel ranks each require their own telemetry endpoint. Ports are
-            reserved before any server binds, eliminating the race that otherwise causes
-            concurrent rank processes to collide with EADDRINUSE errors.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>Worst-pressure load scoring</h3>
-          <p>
-            The 0 to 100 load score uses the greater of KV pressure and request pressure.
-            A waiting request raises the score to at least 90 because a queue is direct
-            evidence that the scheduler cannot place work immediately.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>Throughput from counters</h3>
-          <p>
-            vLLM exposes cumulative generated tokens rather than a tokens-per-second gauge.
-            KVWatch differences that counter over measured time, carries a rolling baseline,
-            and clamps counter resets to zero so restarts never create false spikes.
-          </p>
-        </article>
+    <section class="case-section" aria-labelledby="engineering-title">
+      <div class="case-section-heading"><p class="eyebrow">04 / Engineering decisions</p><h2 id="engineering-title">Useful when conditions change.</h2></div>
+      <div class="case-columns">
+        <article><h3>Read-only observation</h3><p>The plugin observes serving state and leaves scheduling decisions to vLLM. Telemetry is designed to stay separate from the work of running inference.</p></article>
+        <article><h3>Resilient collection</h3><p>Nodes report online, partial, or offline health. Collection failures preserve the last known snapshot and surface the error, keeping gaps in the data visible.</p></article>
+        <article><h3>Trustworthy throughput</h3><p>Generated tokens per second are derived from counter changes over measured time. Reset handling prevents a server restart from creating a false throughput spike.</p></article>
       </div>
+      <details class="technical-notes">
+        <summary>Validation, benchmarks &amp; parallelism edge cases</summary>
+        <div>
+          <p><strong>Hardware-free integration tests:</strong> Mock HTTP servers reproduce KVWatch and Prometheus payloads, including changing counters. Coverage includes health states, stale-data reconciliation, load-score boundaries, throughput calculations, and ANSI-safe CLI alignment.</p>
+          <p><strong>Serving benchmarks:</strong> A companion harness collects GPU, NVLink, and remote fabric telemetry during vLLM serving benchmarks. It aggregates throughput and TTFT, TPOT, and ITL percentiles into Excel reports.</p>
+          <p><strong>Data-parallel port reservation:</strong> Each rank needs its own telemetry endpoint. Reserving ports before server binding avoids collisions between concurrently starting rank processes.</p>
+        </div>
+      </details>
     </section>
-
-    <section class="detail-section reveal" aria-labelledby="operations-title">
-      <h2 id="operations-title">Built for production behavior</h2>
-      <div class="detail-columns three">
-        <article class="detail-panel">
-          <h3>Read-only by design</h3>
-          <p>The observer samples serving state but never mutates it. Monitoring failures cannot alter scheduler decisions or block inference.</p>
-        </article>
-        <article class="detail-panel">
-          <h3>Honest degradation</h3>
-          <p>Nodes report ONLINE, PARTIAL, or OFFLINE. Composite scores are withheld when required inputs are missing instead of presenting misleading estimates.</p>
-        </article>
-        <article class="detail-panel">
-          <h3>Last-known-state resilience</h3>
-          <p>If collection fails, the control-plane server keeps the previous snapshot visible and surfaces the error rather than allowing the dashboard to go blank.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="detail-section reveal" aria-labelledby="testing-title">
-      <h2 id="testing-title">Benchmarking and validation</h2>
-      <div class="detail-columns">
-        <article class="detail-panel">
-          <h3>Serving benchmark harness</h3>
-          <p>
-            A companion harness runs vLLM serving benchmarks while collecting GPU,
-            NVLink, and remote fabric telemetry. Results are aggregated into an Excel
-            report with throughput plus TTFT, TPOT, and ITL percentiles.
-          </p>
-        </article>
-        <article class="detail-panel">
-          <h3>Hardware-free integration tests</h3>
-          <p>
-            Mock HTTP servers reproduce the real KVWatch and Prometheus schemas, including
-            changing counters. Tests cover health states, stale reconciliation, load-score
-            boundaries, throughput calculations, and ANSI-safe terminal alignment.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="detail-section reveal" aria-labelledby="stack-title">
-      <h2 id="stack-title">Technology and systems</h2>
-      <ul class="service-list kvwatch-stack" aria-label="KVWatch technology stack">
-        <li>Python</li>
-        <li>vLLM V1</li>
-        <li>AsyncScheduler</li>
-        <li>Prometheus</li>
-        <li>NVML</li>
-        <li>Docker Compose</li>
-        <li>ThreadingHTTPServer</li>
-        <li>Confluence</li>
-        <li>DCGM</li>
-        <li>NVLink</li>
-        <li>GPU inference</li>
-        <li>Observability</li>
-      </ul>
-    </section>
-
-    <p class="detail-note reveal">
-      KVWatch was built at Cerio for internal GPU infrastructure observability. This
-      portfolio page describes the system architecture and engineering work without
-      exposing private deployment details or operational credentials.
-    </p>
+    <nav class="project-end" aria-label="Project navigation">
+      <a href="../index.html#projects">← Back to all projects</a>
+      <a class="next-project" href="handfluence.html"><span>Explore next / Applied ML</span><strong>Handfluence ↗</strong></a>
+    </nav>
   </main>
-
-  <footer>
-    <a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com</a>
-    <span class="foot-dot">&middot;</span>
-    <a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener">linkedin.com/in/gilc</a>
-    <span class="foot-dot">&middot;</span>
-    <a href="../index.html#projects">More projects</a>
-  </footer>
-
-  <script src="../js/main.js?v=20260830-7"></script>
+  <footer class="site-footer wrap"><span>© 2026 Christopher Gil Icaza</span><a href="mailto:gilchristopher404@gmail.com">Get in touch ↗</a><a href="#main">Back to top ↑</a></footer>
 </body>
 </html>
