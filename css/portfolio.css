@@ -404,3 +404,26 @@ a:focus-visible, button:focus-visible, summary:focus-visible, video:focus-visibl
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+/* KVWatch: real dashboard screenshots composed as a homepage preview. */
+.kv-collage { display: grid; grid-template-columns: .9fr 1.35fr; gap: 9px; height: 206px; }
+.kv-crop { min-width: 0; overflow: hidden; border: 1px solid #3c374b; border-radius: 5px; background: #191e27; padding: 9px 10px 0; }
+.kv-crop > span { display: block; color: #c7b7d7; font-size: 10px; letter-spacing: .025em; margin-bottom: 5px; }
+.kv-crop svg { display: block; width: 100%; height: auto; }
+.kv-crop-graphs { grid-column: 1 / -1; }
+.kv-crop-memory svg { margin-top: 15px; }
+.kv-overview-preview .screenshot-link { display: block; max-height: 470px; overflow: hidden; }
+.kv-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 32px; }
+.kv-gallery figure { min-width: 0; margin: 0; }
+.kv-tall-shot { display: block; height: 360px; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: #101218; }
+.kv-tall-shot img { width: 100%; height: auto; }
+.kv-gallery figcaption { color: var(--muted); font-size: 12px; line-height: 1.75; margin-top: 12px; }
+.kv-gallery figcaption strong { color: var(--ink); font-weight: 500; }
+.kv-request-preview { margin-top: 32px; }
+@media (max-width: 760px) {
+  .kv-gallery { grid-template-columns: 1fr; }
+  .kv-tall-shot { height: 330px; }
+  .kv-collage { height: 210px; }
+  .kv-overview-preview .screenshot-link { max-height: 380px; }
+}
+.kv-overview-preview .screenshot-link, .kv-tall-shot { position: relative; }
+.kv-overview-preview .screenshot-action, .kv-tall-shot .screenshot-action { position: absolute; bottom: 0; left: 0; right: 0; }

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/portfolio.css?v=20261010-6" />
+  <link rel="stylesheet" href="css/portfolio.css?v=20261013-2" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -53,11 +53,21 @@
         <article class="project-card">
           <a class="project-visual kv-visual" href="projects/kvwatch.html" aria-label="Explore KVWatch">
             <div class="visual-topline"><span><span class="small-dot" aria-hidden="true"></span> GPU infrastructure</span><span>01</span></div>
-            <img src="assets/kvwatch-card-dashboard.png" alt="KVWatch dashboard with per-GPU KV-cache usage and GPU memory allocation" width="1600" height="1000" />
+            <div class="kv-collage" aria-hidden="true">
+              <div class="kv-crop kv-crop-throughput"><span>Live output</span>
+                <svg viewBox="435 1240 580 170"><image href="assets/kvwatch-overview.png" width="3840" height="3326" /></svg>
+              </div>
+              <div class="kv-crop kv-crop-memory"><span>GPU VRAM allocation</span>
+                <svg viewBox="2070 1840 1330 180"><image href="assets/kvwatch-overview.png" width="3840" height="3326" /></svg>
+              </div>
+              <div class="kv-crop kv-crop-graphs"><span>Requests &amp; throughput over time</span>
+                <svg viewBox="435 1045 2970 485"><image href="assets/kvwatch-diagnostics.png" width="3840" height="5010" /></svg>
+              </div>
+            </div>
           </a>
           <div class="project-copy"><div class="project-meta"><span>Observability / Internal tool</span><span>Cerio</span></div>
             <h3><a href="projects/kvwatch.html">KVWatch <span aria-hidden="true">↗</span></a></h3>
-            <p>Making LLM bottlenecks visible. A diagnostic platform that brings GPU memory, queue pressure, and per-request KV-cache usage into one view.</p>
+            <p>From live inference metrics to individual requests. Three focused views connect latency, throughput, GPU memory, and request-level KV-cache usage.</p>
             <ul class="tags" aria-label="KVWatch technologies"><li>Python</li><li>vLLM</li><li>NVML</li><li>Prometheus</li></ul>
             <a class="project-link" href="projects/kvwatch.html">Explore the system <span aria-hidden="true">→</span></a>
           </div>
