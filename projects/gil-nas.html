@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/portfolio.css?v=20261010-6" />
+  <link rel="stylesheet" href="../css/portfolio.css?v=20261014-8" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -65,8 +65,46 @@
       </div>
     </section>
 
+    <section class="case-section build-gallery" aria-labelledby="assembly-title">
+      <div class="case-section-heading"><p class="eyebrow">02 / Inside the build</p><h2 id="assembly-title">From printed parts to working system.</h2></div>
+      <figure class="build-gallery-feature">
+        <a class="screenshot-link" href="../assets/gil-nas-enclosure-build.webp" target="_blank" rel="noopener" aria-label="Open the GIL-NAS enclosure build photo in a new tab">
+          <img src="../assets/gil-nas-enclosure-build.webp" alt="Finished black and red four-bay GIL-NAS enclosure beside the exposed red drive cage during assembly" width="2000" height="901" loading="lazy" />
+        </a>
+        <figcaption>The exposed drive cage beside the finished front enclosure during fit checks.</figcaption>
+      </figure>
+      <div class="build-gallery-detail">
+        <figure class="build-gallery-card build-gallery-portrait">
+          <a class="screenshot-link" href="../assets/gil-nas-drive-cage-interior.webp" target="_blank" rel="noopener" aria-label="Open the internal drive cage photo in a new tab">
+            <img src="../assets/gil-nas-drive-cage-interior.webp" alt="Interior view of the four-bay drive cage, SATA connectors, wiring, and controller board" width="1081" height="2400" loading="lazy" />
+          </a>
+          <figcaption>Drive connectors and SATA wiring routed behind the removable four-bay cage.</figcaption>
+        </figure>
+        <div class="build-gallery-stack">
+          <figure class="build-gallery-card">
+            <a class="screenshot-link" href="../assets/gil-nas-penta-sata-stack.webp" target="_blank" rel="noopener" aria-label="Open the Raspberry Pi and SATA HAT close-up in a new tab">
+              <img src="../assets/gil-nas-penta-sata-stack.webp" alt="Close-up of the Raspberry Pi 5 and stacked ROCK Pi Penta SATA HAT with power and data cables connected" width="2000" height="901" loading="lazy" />
+            </a>
+            <figcaption>Raspberry Pi 5 and ROCK Pi Penta SATA HAT during bench assembly.</figcaption>
+          </figure>
+          <figure class="build-gallery-card">
+            <a class="screenshot-link" href="../assets/gil-nas-sata-hat-install.webp" target="_blank" rel="noopener" aria-label="Open the SATA HAT enclosure installation photo in a new tab">
+              <img src="../assets/gil-nas-sata-hat-install.webp" alt="ROCK Pi Penta SATA HAT mounted inside the black enclosure with the drive cage behind it" width="2000" height="901" loading="lazy" />
+            </a>
+            <figcaption>The SATA controller mounted inside the enclosure before final drive and display wiring.</figcaption>
+          </figure>
+          <figure class="build-gallery-card">
+            <a class="screenshot-link" href="../assets/gil-nas-telemetry-display.webp" target="_blank" rel="noopener" aria-label="Open the telemetry display prototype photo in a new tab">
+              <img src="../assets/gil-nas-telemetry-display.webp" alt="Small blue telemetry display reporting the NAS network address, RAM utilization, and boot-drive usage" width="2000" height="1180" loading="lazy" />
+            </a>
+            <figcaption>Telemetry display prototype reporting network address, RAM use, and boot-drive capacity.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="case-section" aria-labelledby="storage-title">
-      <div class="case-section-heading"><p class="eyebrow">02 / Storage decisions</p><h2 id="storage-title">Different data. Different priorities.</h2></div>
+      <div class="case-section-heading"><p class="eyebrow">03 / Storage decisions</p><h2 id="storage-title">Different data. Different priorities.</h2></div>
       <div class="case-duo">
         <article class="decision-panel"><p class="eyebrow">Documents / Redundancy</p><h3>Mirrored important files.</h3><p>Two 3 TB WD Red drives form a RAID 1 volume. Mirroring prioritizes availability if one drive fails.</p><p class="decision-spec">2 × 3 TB · RAID 1 · raid1_important</p></article>
         <article class="decision-panel"><p class="eyebrow">Media / Capacity</p><h3>More room for replaceable data.</h3><p>The other two drives form a larger media pool, trading disk redundancy for usable capacity where content can be replaced.</p><p class="decision-spec">2 × 3 TB · Pooled storage · mass_media</p></article>
@@ -79,7 +117,7 @@
     </section>
 
     <section class="case-section" id="monitoring" aria-labelledby="monitoring-title">
-      <div class="case-section-heading"><p class="eyebrow">03 / Observability</p><h2 id="monitoring-title">Know how the whole box is doing.</h2></div>
+      <div class="case-section-heading"><p class="eyebrow">04 / Observability</p><h2 id="monitoring-title">Know how the whole box is doing.</h2></div>
       <div class="system-showcase">
         <figure class="system-preview">
           <a class="screenshot-link" href="../assets/project-gil-nas-grafana.png" target="_blank" rel="noopener" aria-label="Open the full GIL-NAS Grafana dashboard in a new tab"><img src="../assets/project-gil-nas-grafana.png" alt="Grafana Pi 5 Metrics dashboard with CPU, RAM, boot SSD, mirrored storage, pooled storage, and network telemetry" width="2090" height="1342" loading="lazy" /><span class="screenshot-action">Open full dashboard <span aria-hidden="true">↗</span></span></a>
@@ -90,7 +128,7 @@
     </section>
 
     <section class="case-section" aria-labelledby="foundation-title">
-      <div class="case-section-heading"><p class="eyebrow">04 / Build credits</p><h2 id="foundation-title">A foundation worth building on.</h2></div>
+      <div class="case-section-heading"><p class="eyebrow">05 / Build credits</p><h2 id="foundation-title">A foundation worth building on.</h2></div>
       <p class="case-caption">The enclosure STL files and baseline four-bay assembly follow Michael Klements’ project for The DIY Life. My work extends that foundation through the storage configuration, software stack, cooling, display housings, and observability described here.</p>
       <a class="text-link source-action" href="https://the-diy-life.com/building-a-4-bay-3-5-nas-with-a-raspberry-pi-5-and-3d-printed-enclosure/" target="_blank" rel="noopener noreferrer">Read Michael Klements’ original build guide <span aria-hidden="true">↗</span></a>
       <details class="technical-notes"><summary>Enclosure, fabrication &amp; hardware details</summary><div><p>The enclosure was printed on a Bambu Lab P1S with AMS in red and black PLA. Custom top-mounted display housings bring the two LCDs into the finished unit, and a Noctua 12 V exhaust fan provides active cooling for the Pi and hard drives.</p><p>The ROCK Pi Penta SATA HAT connects the four WD Red drives. An M.2 SSD in a USB enclosure handles boot storage, while the LCDs report the IP address, CPU and RAM load, CPU and SSD temperatures, and storage utilization.</p></div></details>

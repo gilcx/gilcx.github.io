@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/portfolio.css?v=20261013-2" />
+  <link rel="stylesheet" href="css/portfolio.css?v=20261014-8" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,7 +23,7 @@
   <main id="main" class="wrap">
     <section class="home-hero" aria-labelledby="intro-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="accent-line" aria-hidden="true"></span> AI &amp; systems engineer</p>
+        <p class="eyebrow"><span class="accent-diamond" aria-hidden="true"></span> AI &amp; systems engineer</p>
         <h1 id="intro-title">Christopher<br />Gil Icaza<span class="accent">.</span></h1>
         <p class="hero-description">I build the systems behind useful AI.</p>
         <p class="hero-summary">From multi-GPU inference to real-time computer vision, I turn complex workloads into practical, observable tools.</p>
@@ -43,9 +43,9 @@
       </aside>
     </section>
     <div class="highlights" aria-label="Career highlights">
-      <div><span class="highlight-label">Education</span><strong>Queen’s University</strong><span>B.Comp. (Honours) · Expected Apr 2027</span></div>
-      <div><span class="highlight-label">Award-winning work</span><strong>1st place · Handfluence</strong><span>Mayor’s Innovation Challenge 2025</span></div>
-      <div><span class="highlight-label">Beyond building</span><strong>Teaching excellence</strong><span>Queen’s Teaching Assistance Award 2025</span></div>
+      <div><span class="highlight-label">Education</span><strong>Queen's University</strong><span>B.Comp. (Honours) · Expected Apr 2027</span></div>
+      <div><span class="highlight-label">Award-winning work</span><strong>1st place · Handfluence</strong><span>Mayor's Innovation Challenge 2025</span></div>
+      <div><span class="highlight-label">Beyond building</span><strong>Teaching excellence</strong><span>Queen's Teaching Assistance Award 2025</span></div>
     </div>
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading"><div><p class="eyebrow">01 / Selected work</p><h2 id="projects-title">Built to solve real problems.</h2></div><p>AI infrastructure, applied ML,<br />and a few things built from scratch.</p></div>
@@ -53,15 +53,28 @@
         <article class="project-card">
           <a class="project-visual kv-visual" href="projects/kvwatch.html" aria-label="Explore KVWatch">
             <div class="visual-topline"><span><span class="small-dot" aria-hidden="true"></span> GPU infrastructure</span><span>01</span></div>
-            <div class="kv-collage" aria-hidden="true">
-              <div class="kv-crop kv-crop-throughput"><span>Live output</span>
-                <svg viewBox="435 1240 580 170"><image href="assets/kvwatch-overview.png" width="3840" height="3326" /></svg>
+            <div class="kv-thumb" aria-hidden="true">
+              <div class="kv-thumb-main">
+                <div class="kv-thumb-requests">
+                  <div class="kv-thumb-panel-title"><strong>Active requests</strong><span>3 running · 0 waiting</span></div>
+                  <div class="kv-thumb-request-head"><span>Request</span><span>Context</span><strong>KV / GPU</strong></div>
+                  <div class="kv-thumb-request-row is-featured"><span>cmpl…42a1</span><span>23,464</span><strong>4.44 GiB</strong></div>
+                  <div class="kv-thumb-request-row"><span>cmpl…6eb9</span><span>23,674</span><strong>3.17 GiB</strong></div>
+                  <div class="kv-thumb-request-row"><span>cmpl…1e6e</span><span>23,285</span><strong>3.33 GiB</strong></div>
+                </div>
+                <div class="kv-thumb-throughput">
+                  <span>Output throughput</span>
+                  <strong>418 tok/s</strong>
+                  <svg viewBox="0 0 180 70" preserveAspectRatio="none"><polyline points="0,61 21,59 39,60 58,54 76,55 95,18 114,22 132,11 151,14 180,7" /></svg>
+                  <span>TTFT p95 · 3.78 s</span>
+                </div>
               </div>
-              <div class="kv-crop kv-crop-memory"><span>GPU VRAM allocation</span>
-                <svg viewBox="2070 1840 1330 180"><image href="assets/kvwatch-overview.png" width="3840" height="3326" /></svg>
-              </div>
-              <div class="kv-crop kv-crop-graphs"><span>Requests &amp; throughput over time</span>
-                <svg viewBox="435 1045 2970 485"><image href="assets/kvwatch-diagnostics.png" width="3840" height="5010" /></svg>
+              <div class="kv-thumb-memory">
+                <div class="kv-thumb-panel-title"><strong>Physical GPU memory</strong><span>78.3 / 80.0 GiB · 1.74 GiB free</span></div>
+                <div class="kv-thumb-memory-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="kv-thumb-memory-legend">
+                  <span><i class="model"></i>Model</span><span><i class="draft"></i>Draft</span><span><i class="baseline"></i>vLLM</span><span><i class="cuda"></i>CUDA</span><span><i class="reserved"></i>Reserved KV</span><span><i class="runtime"></i>Runtime</span><span><i class="free"></i>Free</span>
+                </div>
               </div>
             </div>
           </a>
@@ -85,11 +98,11 @@
           </div>
         </article>
       </div>
-      <div class="more-work-heading"><h3>More things I’ve built</h3><span>Hardware to interactive experiences</span></div>
+      <div class="more-work-heading"><h3>More things I've built</h3><span>Hardware to interactive experiences</span></div>
       <div class="more-work">
         <a class="small-project" href="projects/gil-nas.html"><img src="assets/project-gil-nas.png" alt="Custom four-bay GIL-NAS enclosure" loading="lazy" width="120" height="100" /><div><span class="small-category">Systems &amp; hardware</span><h4>GIL-NAS</h4><p>Raspberry Pi 5 · Docker · Grafana</p></div><span class="small-arrow" aria-hidden="true">↗</span></a>
         <a class="small-project" href="projects/arrow-dynamix.html"><img src="assets/arrow-gameplay-4.png" alt="Arrow Dynamix dungeon gameplay" loading="lazy" width="120" height="100" /><div><span class="small-category">Game development</span><h4>Arrow Dynamix</h4><p>Unity · C# · Game design</p></div><span class="small-arrow" aria-hidden="true">↗</span></a>
-        <a class="small-project" href="projects/game-design-club.html"><img src="assets/qgdc-landing-page.png" alt="Queen’s Game Development Club website" loading="lazy" width="120" height="100" /><div><span class="small-category">Full-stack development</span><h4>Queen’s Game Dev Club</h4><p>React · Tailwind · Sanity CMS</p></div><span class="small-arrow" aria-hidden="true">↗</span></a>
+        <a class="small-project" href="projects/game-design-club.html"><img src="assets/qgdc-landing-page.png" alt="Queen's Game Development Club website" loading="lazy" width="120" height="100" /><div><span class="small-category">Full-stack development</span><h4>Queen's Game Dev Club</h4><p>React · Tailwind · Sanity CMS</p></div><span class="small-arrow" aria-hidden="true">↗</span></a>
       </div>
     </section>
     <section class="section experience-section" id="experience" aria-labelledby="experience-title">
@@ -97,24 +110,24 @@
       <div class="experience-layout">
         <div class="experience-list">
           <article class="experience-entry"><div class="experience-top"><h3>Cerio</h3><span>Sept 2025–present</span></div><p class="role">Software &amp; Systems Engineering Intern · AI Infrastructure</p><ul><li>Benchmark and optimize LLM inference on NVIDIA A100 GPUs: multi-GPU parallelism, quantization, speculative decoding, and long-context workloads.</li><li>Build private RAG and agent workflows with LangGraph, Qdrant, and MCP, backed by vLLM and SGLang.</li><li>Engineer KVWatch to diagnose GPU memory, queue pressure, and request-level KV-cache usage across servers.</li></ul></article>
-          <article class="experience-entry"><div class="experience-top"><h3>Queen’s University</h3><span>Sept 2024–Apr 2025</span></div><p class="role">Teaching Assistant · C Programming &amp; Discrete Mathematics</p><p>Supported students in programming, algorithms, logic, and debugging through tutorials and one-on-one technical guidance.</p><p class="inline-note">Queen’s Excellence in Teaching Assistance Award · 2025</p></article>
+          <article class="experience-entry"><div class="experience-top"><h3>Queen's University</h3><span>Sept 2024–Apr 2025</span></div><p class="role">Teaching Assistant · C Programming &amp; Discrete Mathematics</p><p>Supported students in programming, algorithms, logic, and debugging through tutorials and one-on-one technical guidance.</p><p class="inline-note">Queen's Excellence in Teaching Assistance Award · 2025</p></article>
         </div>
-        <aside class="toolkit" aria-label="Technical skills"><h3>The toolkit</h3><dl><div><dt>AI &amp; GPU</dt><dd>vLLM, SGLang, PyTorch, TensorFlow, NVIDIA A100, NVLink</dd></div><div><dt>Agents &amp; retrieval</dt><dd>LangGraph, RAG, MCP, Qdrant</dd></div><div><dt>Systems &amp; infrastructure</dt><dd>Linux, Docker, Caddy, NVML/DCGM, Prometheus, Grafana</dd></div><div><dt>Languages &amp; web</dt><dd>Python, C/C++, Java, JavaScript, SQL, React, Next.js</dd></div></dl></aside>
+        <aside class="toolkit" aria-label="Technical skills"><h3>My toolkit!</h3><dl><div><dt>AI &amp; GPU</dt><dd>vLLM, SGLang, PyTorch, TensorFlow, NVIDIA A100, NVLink</dd></div><div><dt>Agents &amp; retrieval</dt><dd>LangGraph, RAG, MCP, Qdrant</dd></div><div><dt>Systems &amp; infrastructure</dt><dd>Linux, Docker, Caddy, NVML/DCGM, Prometheus, Grafana</dd></div><div><dt>Languages &amp; web</dt><dd>Python, C/C++, Java, JavaScript, SQL, React, Next.js</dd></div></dl></aside>
       </div>
     </section>
     <section class="education-section" id="education" aria-labelledby="education-title">
       <div class="education-degree">
         <p class="eyebrow">03 / Education</p>
-        <p class="education-school">Queen’s University</p>
+        <p class="education-school">Queen's University</p>
         <h2 id="education-title">Bachelor of Computing <span>(Honours)</span></h2>
         <p class="education-major">Computer Science</p>
       </div>
       <dl class="education-facts">
         <div><dt>Expected graduation</dt><dd>April 2027</dd></div>
-        <div><dt>Academic recognition</dt><dd>Dean’s Honour List <span>2023–2026</span></dd></div>
+        <div><dt>Academic recognition</dt><dd>Dean's Honour List <span>2023–2026</span></dd></div>
       </dl>
     </section>
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">04 / Let’s connect</p><h2 id="contact-title">Have something in mind?</h2><p>I’d love to talk AI, infrastructure, and what you’re building.</p></div><div class="contact-links"><a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com <span aria-hidden="true">↗</span></a><a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener noreferrer"><span class="social-label"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zM4.943 13.394V6.169H2.542v7.225zM3.743 5.182c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>LinkedIN</span> <span aria-hidden="true">↗</span></a></div></section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div><p class="eyebrow">04 / Let's connect</p><h2 id="contact-title">Have something in mind?</h2><p>I'd love to talk AI, infrastructure, and what you're building.</p></div><div class="contact-links"><a href="mailto:gilchristopher404@gmail.com">gilchristopher404@gmail.com <span aria-hidden="true">↗</span></a><a href="https://linkedin.com/in/gilc" target="_blank" rel="noopener noreferrer"><span class="social-label"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zM4.943 13.394V6.169H2.542v7.225zM3.743 5.182c.837 0 1.358-.554 1.358-1.248-.015-.709-.521-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.4V9.25c0-2.22-1.184-3.252-2.763-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>LinkedIN</span> <span aria-hidden="true">↗</span></a></div></section>
   </main>
   <footer class="site-footer wrap"><span>© 2026 Christopher Gil Icaza</span><span>Thoughtful software. Useful systems.</span><a href="#main">Back to top ↑</a></footer>
 </body>
